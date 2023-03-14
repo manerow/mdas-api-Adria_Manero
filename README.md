@@ -29,6 +29,17 @@ The application should start and prompt the user to enter a command.
 
 5. Enter `q` to exit the application.
 
+### Rest API
+
+When the application start, test the follow url (Type: GET):
+
+Paramater: (pokemonName)
+
+Test Local
+``` bash
+http://localhost:9091/ms-ne-pokemon/v1/pokemon/getType?pokemonName=lucario
+```
+
 
 ## Technologies Used
 
