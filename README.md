@@ -8,6 +8,16 @@ This application is a simple console application that interacts with the PokeAPI
 - Gradle
 
 ## Getting Started
+## Docker build
+This application can be built and executed using Docker. In order to do so, use the following commands:
+```
+docker build -t mdas-api-g6:1.0.0 .
+```
+
+```
+docker run --rm -d --name ctr-api-g6 -p 9091:9091 mdas-api-g6:1.0.0
+```
+
 ### Console
 
 To run the application on the console, follow the steps below:
@@ -39,7 +49,6 @@ Test Local
 ``` bash
 http://localhost:9091/ms-ne-pokemon/v1/pokemon/getType?pokemonName=lucario
 ```
-
 
 ## Technologies Used
 
