@@ -1,12 +1,12 @@
 package com.mdas.api.g6.application;
 
-import com.mdas.api.g6.PokemonCreator;
+import com.mdas.api.g6.creator.PokemonCreator;
 import com.mdas.api.g6.pokemon.application.impl.GetPokemonTypesByNameImpl;
+import com.mdas.api.g6.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokemon.domain.exception.PokeApiConnectionErrorException;
 import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokemon.domain.services.PokemonDomainService;
 import com.mdas.api.g6.pokemon.domain.valueobject.PokemonName;
-import com.mdas.api.g6.pokemon.domain.valueobject.PokemonTypes;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,8 +34,8 @@ public class GetPokemonTypesByNameImplTest {
     }
 
     private void when() throws PokemonNotFoundException, PokeApiConnectionErrorException {
-        Mockito.when(pokemonDomainService.getPokemonTypesByName(Mockito.any(PokemonName.class)))
-                .thenReturn(PokemonCreator.createPokemonTypes());
+        Mockito.when(pokemonDomainService.getPokemonByName(Mockito.any(PokemonName.class)))
+                .thenReturn(PokemonCreator.createPokemon());
 
         service = new GetPokemonTypesByNameImpl(pokemonDomainService);
     }
@@ -46,7 +46,7 @@ public class GetPokemonTypesByNameImplTest {
         initMock();
         when();
 
-        PokemonTypes result = service.execute("lucario");
+        Pokemon result = service.execute("lucario");
         Assertions.assertNotNull(result);
 
     }

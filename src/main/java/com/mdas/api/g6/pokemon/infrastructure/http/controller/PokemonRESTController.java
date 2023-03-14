@@ -28,7 +28,7 @@ public class PokemonRESTController {
     public ResponseEntity<String> getPokemon(@RequestParam(value = "pokemonName") String pokemonName) {
         PokemonTypes pokemonTypes;
         try {
-            pokemonTypes = getApiPokemonTypesByName.execute(pokemonName);
+            pokemonTypes = getApiPokemonTypesByName.execute(pokemonName).getTypes();
         }  catch (PokemonNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         } catch (PokeApiConnectionErrorException e) {

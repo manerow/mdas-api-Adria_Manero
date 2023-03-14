@@ -1,4 +1,4 @@
-package com.mdas.api.g6.pokemon.infrastructure.console;
+package com.mdas.api.g6.pokemon.infrastructure.console.controller;
 
 import com.mdas.api.g6.pokemon.application.GetPokemonTypesByName;
 import com.mdas.api.g6.pokemon.domain.exception.PokeApiConnectionErrorException;
@@ -51,7 +51,7 @@ public class PokemonConsoleController {
         String pokemonName = input.get(1);
         PokemonTypes pokemonTypes;
         try {
-            pokemonTypes = getPokemonTypesByName.execute(pokemonName);
+            pokemonTypes = getPokemonTypesByName.execute(pokemonName).getTypes();
         } catch (PokemonNotFoundException | PokeApiConnectionErrorException e) {
             System.out.println(
                     "Error occurred trying to fetch pokemon types.\n" +

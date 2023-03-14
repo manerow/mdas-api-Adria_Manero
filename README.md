@@ -15,29 +15,16 @@ docker build -t mdas-api-g6:1.0.0 .
 ```
 
 ```
-docker run --rm -d --name ctr-api-g6 -p 9091:9091 mdas-api-g6:1.0.0
+docker run -it --rm --name ctr-api-g6 -p 9091:9091 mdas-api-g6:1.0.0
 ```
 
 ### Console
 
 To run the application on the console, follow the steps below:
 
-1. Clone the repository using the following command:
-``` bash
-git clone https://github.com/manerow/mdas-api-g6.git
-```
-2. Navigate to the project's root directory using the command prompt.
+After running the above Docker interactive run command, the application should have started and prompt the user to enter a command.
 
-3. Run the application using the following command:
-``` bash
-./gradlew clean bootRun --console=plain
-```
-
-The application should start and prompt the user to enter a command.
-
-4. Enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon.
-
-5. Enter `q` to exit the application.
+Enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon.
 
 ### Rest API
 

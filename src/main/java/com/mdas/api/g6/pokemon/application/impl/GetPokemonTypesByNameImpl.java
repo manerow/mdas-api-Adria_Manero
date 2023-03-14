@@ -1,6 +1,7 @@
 package com.mdas.api.g6.pokemon.application.impl;
 
 import com.mdas.api.g6.pokemon.application.GetPokemonTypesByName;
+import com.mdas.api.g6.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokemon.domain.exception.PokeApiConnectionErrorException;
 import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokemon.domain.services.PokemonDomainService;
@@ -18,9 +19,9 @@ public class GetPokemonTypesByNameImpl implements GetPokemonTypesByName {
     private final PokemonDomainService pokemonDomainService;
 
     @Override
-    public PokemonTypes execute(String name)
+    public Pokemon execute(String name)
             throws PokemonNotFoundException, PokeApiConnectionErrorException {
         PokemonName pokemonName = new PokemonName(name);
-        return pokemonDomainService.getPokemonTypesByName(pokemonName);
+        return pokemonDomainService.getPokemonByName(pokemonName);
     }
 }

@@ -1,7 +1,7 @@
 package com.mdas.api.g6;
 
 
-import com.mdas.api.g6.pokemon.infrastructure.console.PokemonConsoleController;
+import com.mdas.api.g6.pokemon.infrastructure.console.controller.PokemonConsoleController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -46,7 +46,7 @@ public class PokeApiApplication {
 				pokemonConsoleController.handleCommand(input.subList(1, input.size()));
 				break;
 			case QUIT:
-				System.out.println("Closing application...");
+				System.out.println("Closing console application...");
 				break;
 			default:
 				handleInvalidCommand();
