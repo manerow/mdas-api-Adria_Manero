@@ -2,11 +2,6 @@
 
 This application is a simple console application that interacts with the PokeAPI to retrieve information about Pokemons. It is built using Java and the Spring Boot framework, and follows the Hexagonal Architecture pattern.
 
-## Prerequisites
-
-- JDK 11 or higher
-- Gradle
-
 ## Getting Started
 ## Docker build
 This application can be built and executed using Docker. In order to do so, use the following commands:
