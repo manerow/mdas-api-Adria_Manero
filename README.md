@@ -20,12 +20,12 @@ git clone https://github.com/manerow/mdas-api-g6.git
 
 3. Run the application using the following command:
 ``` bash
-./gradlew bootRun --console=plain --args=console
+./gradlew clean bootRun --console=plain
 ```
 
 The application should start and prompt the user to enter a command.
 
-4. Enter `type <pokemon_name>` to obtain the types of the specified Pokemon.
+4. Enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon.
 
 5. Enter `q` to exit the application.
 
