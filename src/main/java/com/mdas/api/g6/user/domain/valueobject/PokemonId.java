@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class FavouritePokemonId {
+public class PokemonId {
     private Integer id;
 }
