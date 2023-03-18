@@ -40,7 +40,7 @@ class UserCreatorTest {
         // THEN
         assertEquals(createdUser.getId(), userId);
         assertEquals(createdUser.getName(), userName);
-        assertNull(createdUser.getFavouritePokemons());
+        assertTrue(createdUser.getFavouritePokemons().getFavouritePokemons().isEmpty());
         verify(userRepositoryMock, times(1)).existsByName(userName.getName());
         verify(userRepositoryMock, times(1)).save(Mockito.any(User.class));
     }
