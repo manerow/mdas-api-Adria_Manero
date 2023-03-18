@@ -1,19 +1,16 @@
 package com.mdas.api.g6.user.domain;
 
 import com.mdas.api.g6.user.domain.valueobject.FavouritePokemons;
+import com.mdas.api.g6.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.domain.valueobject.UserName;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.util.UUID;
+import lombok.Setter;
 @Getter
+@Setter
+@AllArgsConstructor
 public class User {
-    private UUID id;
+    private UserId id;
     private UserName name;
     private FavouritePokemons favouritePokemons;
-
-    public User(UserName name, FavouritePokemons favouritePokemons) {
-        this.id = UUID.randomUUID();
-        this.name = name;
-        this.favouritePokemons = favouritePokemons;
-    }
 }
