@@ -36,7 +36,7 @@ class CreateUserUseCaseTest {
         UserId userId = UserIdMother.random();
         UserName userName = UserNameMother.random();
         FavouritePokemons favouritePokemons = FavouritePokemonsMother.random(new HashSet<>());
-        User user = UserMother.random(userId, userName, favouritePokemons);
+        User user = UserMother.random(userId, userName, new FavouritePokemons(new HashSet<>()));
         when(userCreatorMock.create(any(UserId.class), any(UserName.class))).thenReturn(user);
 
         // WHEN
