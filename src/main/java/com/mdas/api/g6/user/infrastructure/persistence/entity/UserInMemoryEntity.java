@@ -16,5 +16,5 @@ public class UserInMemoryEntity {
 
     private String name;
 
-    private Set<Integer> favouritePokemons;
+    private Set<Integer> favoritePokemons;
 }

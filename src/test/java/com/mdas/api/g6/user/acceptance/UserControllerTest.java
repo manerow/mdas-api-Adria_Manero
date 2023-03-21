@@ -39,7 +39,7 @@ class UserControllerTest {
 
         // WHEN
         ResponseEntity<ApiResponse<User>> response = restTemplate.exchange(
-                "/user",
+                "/user/create",
                 HttpMethod.POST,
                 request,
                 ParameterizedTypeReference.forType(TypeUtils.parameterize(ApiResponse.class, User.class))
@@ -62,14 +62,14 @@ class UserControllerTest {
 
         // WHEN
         ResponseEntity<ApiResponse<User>> response0 = restTemplate.exchange(
-                "/user",
+                "/user/create",
                 HttpMethod.POST,
                 request,
                 ParameterizedTypeReference.forType(TypeUtils.parameterize(ApiResponse.class, User.class))
         );
 
         ResponseEntity<ApiResponse<User>> response1 = restTemplate.exchange(
-                "/user",
+                "/user/create",
                 HttpMethod.POST,
                 request,
                 ParameterizedTypeReference.forType(TypeUtils.parameterize(ApiResponse.class, User.class))

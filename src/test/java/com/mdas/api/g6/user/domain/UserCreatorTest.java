@@ -6,7 +6,6 @@ import com.mdas.api.g6.user.domain.services.UserCreator;
 import com.mdas.api.g6.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.domain.valueobject.UserName;
 import com.mdas.api.g6.user.objectmother.UserIdMother;
-import com.mdas.api.g6.user.objectmother.UserMother;
 import com.mdas.api.g6.user.objectmother.UserNameMother;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -40,7 +39,7 @@ class UserCreatorTest {
         // THEN
         assertEquals(createdUser.getId(), userId);
         assertEquals(createdUser.getName(), userName);
-        assertTrue(createdUser.getFavouritePokemons().getFavouritePokemons().isEmpty());
+        assertTrue(createdUser.getFavoritePokemons().getFavoritePokemons().isEmpty());
         verify(userRepositoryMock, times(1)).existsByName(userName.getName());
         verify(userRepositoryMock, times(1)).save(Mockito.any(User.class));
     }

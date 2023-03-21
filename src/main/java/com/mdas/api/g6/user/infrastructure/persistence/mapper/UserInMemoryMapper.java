@@ -1,8 +1,8 @@
 package com.mdas.api.g6.user.infrastructure.persistence.mapper;
 
 import com.mdas.api.g6.user.domain.User;
-import com.mdas.api.g6.user.domain.valueobject.FavouritePokemon;
-import com.mdas.api.g6.user.domain.valueobject.FavouritePokemons;
+import com.mdas.api.g6.user.domain.valueobject.FavoritePokemon;
+import com.mdas.api.g6.user.domain.valueobject.FavoritePokemons;
 import com.mdas.api.g6.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.domain.valueobject.UserName;
 import com.mdas.api.g6.user.infrastructure.persistence.entity.UserInMemoryEntity;
@@ -10,7 +10,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -19,11 +18,11 @@ import java.util.stream.Collectors;
 public interface UserInMemoryMapper {
     @Mapping(target = "id", qualifiedByName = "mapIdToDomain")
     @Mapping(target = "name", qualifiedByName = "mapNameToDomain")
-    @Mapping(target = "favouritePokemons", qualifiedByName = "mapFavouritePokemonsToDomain")
+    @Mapping(target = "favoritePokemons", qualifiedByName = "mapFavoritePokemonsToDomain")
     User toDomain(UserInMemoryEntity userInMemoryEntity);
     @Mapping(target = "id", qualifiedByName = "mapIdToEntity")
     @Mapping(target = "name", qualifiedByName = "mapNameToEntity")
-    @Mapping(target = "favouritePokemons", qualifiedByName = "mapFavouritePokemonsToEntity")
+    @Mapping(target = "favoritePokemons", qualifiedByName = "mapFavoritePokemonsToEntity")
     UserInMemoryEntity toEntity(User user);
 
     @Named("mapIdToDomain")
@@ -36,12 +35,12 @@ public interface UserInMemoryMapper {
         return new UserName(name);
     }
 
-    @Named("mapFavouritePokemonsToDomain")
-    default FavouritePokemons mapFavouritePokemonsToDomain(Set<Integer> favouritePokemons) {
-        Set<FavouritePokemon> favouritePokemonsSet = favouritePokemons.stream()
-                .map(FavouritePokemon::new)
+    @Named("mapFavoritePokemonsToDomain")
+    default FavoritePokemons mapFavouritePokemonsToDomain(Set<Integer> favouritePokemons) {
+        Set<FavoritePokemon> favoritePokemonsSet = favouritePokemons.stream()
+                .map(FavoritePokemon::new)
                 .collect(Collectors.toSet());
-        return new FavouritePokemons(favouritePokemonsSet);
+        return new FavoritePokemons(favoritePokemonsSet);
     }
 
     @Named("mapIdToEntity")
@@ -54,10 +53,10 @@ public interface UserInMemoryMapper {
         return userName.getName();
     }
 
-    @Named("mapFavouritePokemonsToEntity")
-    default Set<Integer> mapFavouritePokemonsToEntity(FavouritePokemons favouritePokemons) {
-        return favouritePokemons.getFavouritePokemons().stream()
-                .map(FavouritePokemon::getId)
+    @Named("mapFavoritePokemonsToEntity")
+    default Set<Integer> mapFavouritePokemonsToEntity(FavoritePokemons favoritePokemons) {
+        return favoritePokemons.getFavoritePokemons().stream()
+                .map(FavoritePokemon::getId)
                 .collect(Collectors.toSet());
     }
 }
