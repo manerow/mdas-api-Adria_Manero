@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Service
 @AllArgsConstructor
-public class CreateUser {
+public class CreateUserUseCase {
     private UserCreator userCreator;
 
     public User execute(String name) throws UserAlreadyExistsException {

@@ -22,13 +22,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class CreateUserTest {
+class CreateUserUseCaseTest {
 
     @Mock
     private UserCreator userCreatorMock;
 
     @InjectMocks
-    private CreateUser createUserUseCase;
+    private CreateUserUseCase createUserUseCase;
 
     @Test
     void shouldCreateUserSuccessfully() throws UserAlreadyExistsException {

@@ -1,6 +1,7 @@
 package com.mdas.api.g6.pokedex.pokemon.creator;
 
 import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
+import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonId;
 import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonName;
 import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonType;
 import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonTypes;
@@ -19,6 +20,6 @@ public class PokemonCreator {
         List<PokemonType> types = new ArrayList<>();
         types.add(createPokemonType());
 
-        return new Pokemon(1, new PokemonName("lucario"), new PokemonTypes(types));
+        return new Pokemon(new PokemonId(1), new PokemonName("lucario"), new PokemonTypes(types));
     }
 }
