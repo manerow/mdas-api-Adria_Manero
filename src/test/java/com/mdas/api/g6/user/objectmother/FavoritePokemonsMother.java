@@ -1,8 +1,8 @@
 package com.mdas.api.g6.user.objectmother;
 
 import com.github.javafaker.Faker;
-import com.mdas.api.g6.user.domain.valueobject.FavoritePokemon;
-import com.mdas.api.g6.user.domain.valueobject.FavoritePokemons;
+import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemon;
+import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemons;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,8 +1,8 @@
 package com.mdas.api.g6.user.acceptance;
 
-import com.mdas.api.g6.shared.infrastructure.controller.ApiResponse;
-import com.mdas.api.g6.user.domain.User;
-import com.mdas.api.g6.user.infrastructure.controller.dto.CreateUserRequest;
+import com.mdas.api.g6.shared.infrastructure.controller.dto.ApiResponse;
+import com.mdas.api.g6.user.user.domain.User;
+import com.mdas.api.g6.user.user.infrastructure.controller.dto.CreateUserRequest;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

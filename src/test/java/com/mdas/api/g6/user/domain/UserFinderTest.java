@@ -1,14 +1,15 @@
 package com.mdas.api.g6.user.domain;
 
-import com.mdas.api.g6.user.domain.exception.UserAlreadyExistsException;
-import com.mdas.api.g6.user.domain.exception.UserNotFoundException;
-import com.mdas.api.g6.user.domain.repository.UserRepository;
-import com.mdas.api.g6.user.domain.services.UserCreator;
-import com.mdas.api.g6.user.domain.services.UserFinder;
-import com.mdas.api.g6.user.domain.valueobject.UserId;
-import com.mdas.api.g6.user.domain.valueobject.UserName;
-import com.mdas.api.g6.user.infrastructure.persistence.entity.UserInMemoryEntity;
-import com.mdas.api.g6.user.infrastructure.persistence.mapper.UserInMemoryMapper;
+import com.mdas.api.g6.user.user.domain.User;
+import com.mdas.api.g6.user.user.domain.exception.UserAlreadyExistsException;
+import com.mdas.api.g6.user.user.domain.exception.UserNotFoundException;
+import com.mdas.api.g6.user.user.domain.repository.UserRepository;
+import com.mdas.api.g6.user.user.domain.services.UserCreator;
+import com.mdas.api.g6.user.user.domain.services.UserFinder;
+import com.mdas.api.g6.user.user.domain.valueobject.UserId;
+import com.mdas.api.g6.user.user.domain.valueobject.UserName;
+import com.mdas.api.g6.user.user.infrastructure.persistence.entity.UserInMemoryEntity;
+import com.mdas.api.g6.user.user.infrastructure.persistence.mapper.UserInMemoryMapper;
 import com.mdas.api.g6.user.objectmother.UserIdMother;
 import com.mdas.api.g6.user.objectmother.UserNameMother;
 import org.junit.jupiter.api.Test;

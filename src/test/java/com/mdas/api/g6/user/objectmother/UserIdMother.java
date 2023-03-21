@@ -1,6 +1,6 @@
 package com.mdas.api.g6.user.objectmother;
 
-import com.mdas.api.g6.user.domain.valueobject.UserId;
+import com.mdas.api.g6.user.user.domain.valueobject.UserId;
 
 import java.util.UUID;
 

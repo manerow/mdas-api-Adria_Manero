@@ -1,14 +1,15 @@
 package com.mdas.api.g6.user.application;
 
-import com.mdas.api.g6.user.domain.User;
-import com.mdas.api.g6.user.domain.exception.PokemonAlreadyAddException;
-import com.mdas.api.g6.user.domain.exception.UserNotFoundException;
-import com.mdas.api.g6.user.domain.services.UserAddPokemonFavorite;
-import com.mdas.api.g6.user.domain.services.UserFinder;
-import com.mdas.api.g6.user.domain.valueobject.FavoritePokemons;
-import com.mdas.api.g6.user.domain.valueobject.UserId;
-import com.mdas.api.g6.user.domain.valueobject.UserName;
-import com.mdas.api.g6.user.infrastructure.controller.dto.AddFavoritePokemonRequest;
+import com.mdas.api.g6.user.user.application.AddPokemonFavoriteUseCase;
+import com.mdas.api.g6.user.user.domain.User;
+import com.mdas.api.g6.user.user.domain.exception.PokemonAlreadyAddException;
+import com.mdas.api.g6.user.user.domain.exception.UserNotFoundException;
+import com.mdas.api.g6.user.user.domain.services.UserAddPokemonFavorite;
+import com.mdas.api.g6.user.user.domain.services.UserFinder;
+import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemons;
+import com.mdas.api.g6.user.user.domain.valueobject.UserId;
+import com.mdas.api.g6.user.user.domain.valueobject.UserName;
+import com.mdas.api.g6.user.user.infrastructure.controller.dto.AddFavoritePokemonRequest;
 import com.mdas.api.g6.user.objectmother.UserIdMother;
 import com.mdas.api.g6.user.objectmother.UserNameMother;
 import org.junit.jupiter.api.Test;

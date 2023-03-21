@@ -1,9 +1,9 @@
 package com.mdas.api.g6.pokemon.creator;
 
-import com.mdas.api.g6.pokemon.domain.Pokemon;
-import com.mdas.api.g6.pokemon.domain.valueobject.PokemonName;
-import com.mdas.api.g6.pokemon.domain.valueobject.PokemonType;
-import com.mdas.api.g6.pokemon.domain.valueobject.PokemonTypes;
+import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
+import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonName;
+import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonType;
+import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonTypes;
 
 import java.util.ArrayList;
 import java.util.List;

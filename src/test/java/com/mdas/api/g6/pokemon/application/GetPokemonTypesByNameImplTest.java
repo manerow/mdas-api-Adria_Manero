@@ -1,11 +1,12 @@
 package com.mdas.api.g6.pokemon.application;
 
+import com.mdas.api.g6.pokedex.pokemon.application.GetPokemonByNameUseCase;
 import com.mdas.api.g6.pokemon.creator.PokemonCreator;
-import com.mdas.api.g6.pokemon.domain.Pokemon;
-import com.mdas.api.g6.pokemon.domain.exception.RepositoryUnavailableException;
-import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
-import com.mdas.api.g6.pokemon.domain.services.PokemonDomainService;
-import com.mdas.api.g6.pokemon.domain.valueobject.PokemonName;
+import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
+import com.mdas.api.g6.pokedex.pokemon.domain.exception.RepositoryUnavailableException;
+import com.mdas.api.g6.pokedex.pokemon.domain.exception.PokemonNotFoundException;
+import com.mdas.api.g6.pokedex.pokemon.domain.services.PokemonDomainService;
+import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonName;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

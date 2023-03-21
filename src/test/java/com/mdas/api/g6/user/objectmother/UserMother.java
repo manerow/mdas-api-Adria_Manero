@@ -1,9 +1,9 @@
 package com.mdas.api.g6.user.objectmother;
 
-import com.mdas.api.g6.user.domain.User;
-import com.mdas.api.g6.user.domain.valueobject.FavoritePokemons;
-import com.mdas.api.g6.user.domain.valueobject.UserId;
-import com.mdas.api.g6.user.domain.valueobject.UserName;
+import com.mdas.api.g6.user.user.domain.User;
+import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemons;
+import com.mdas.api.g6.user.user.domain.valueobject.UserId;
+import com.mdas.api.g6.user.user.domain.valueobject.UserName;
 
 public class UserMother {
 
