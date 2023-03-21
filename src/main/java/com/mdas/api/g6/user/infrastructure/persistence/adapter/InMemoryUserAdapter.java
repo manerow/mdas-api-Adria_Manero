@@ -5,6 +5,8 @@ import com.mdas.api.g6.user.domain.repository.UserRepository;
 import com.mdas.api.g6.user.infrastructure.persistence.entity.UserInMemoryEntity;
 import com.mdas.api.g6.user.infrastructure.persistence.mapper.UserInMemoryMapper;
 import com.mdas.api.g6.user.infrastructure.persistence.repository.UserInMemoryRepository;
+import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +24,19 @@ public class InMemoryUserAdapter implements UserRepository {
 
     @Override
     public void save(User user) {
-        UserInMemoryEntity userInMemoryEntity = userInMemoryMapper.toEntity(user);
-        userInMemoryRepository.save(userInMemoryEntity);
+      UserInMemoryEntity userInMemoryEntity = userInMemoryMapper.toEntity(user);
+      userInMemoryRepository.save(userInMemoryEntity);
     }
+
+    @Override
+    public Optional<UserInMemoryEntity> getUserById(UUID userId) {
+        return userInMemoryRepository.getUserById(userId);
+    }
+
+    @Override
+    public void update(User user) {
+        UserInMemoryEntity userInMemoryEntity = userInMemoryMapper.toEntity(user);
+        userInMemoryRepository.update(userInMemoryEntity);
+    }
+
 }

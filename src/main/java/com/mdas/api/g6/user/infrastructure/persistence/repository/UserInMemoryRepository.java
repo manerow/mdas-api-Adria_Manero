@@ -1,14 +1,10 @@
 package com.mdas.api.g6.user.infrastructure.persistence.repository;
 
-import com.mdas.api.g6.user.domain.User;
-import com.mdas.api.g6.user.domain.repository.UserRepository;
 import com.mdas.api.g6.user.infrastructure.persistence.entity.UserInMemoryEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Component
 @RequiredArgsConstructor
@@ -24,4 +20,15 @@ public class UserInMemoryRepository {
     public void save(UserInMemoryEntity userInMemoryEntity) {
         userMap.put(userInMemoryEntity.getId(), userInMemoryEntity);
     }
+
+    public Optional<UserInMemoryEntity> getUserById(UUID userId) {
+        return userMap.values().stream()
+                .filter(user -> user.getId().equals(userId))
+                .findFirst();
+    }
+
+    public void update(UserInMemoryEntity user) {
+        userMap.put(user.getId(), user);
+    }
+
 }
