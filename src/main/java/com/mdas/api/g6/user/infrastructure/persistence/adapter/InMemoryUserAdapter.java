@@ -29,8 +29,11 @@ public class InMemoryUserAdapter implements UserRepository {
     }
 
     @Override
-    public Optional<UserInMemoryEntity> getUserById(UUID userId) {
-        return userInMemoryRepository.getUserById(userId);
+    public User getUserById(UUID userId) {
+
+        Optional<UserInMemoryEntity> po = userInMemoryRepository.getUserById(userId);
+
+        return  po.isPresent() ? userInMemoryMapper.toDomain(po.get()) : null ;
     }
 
     @Override

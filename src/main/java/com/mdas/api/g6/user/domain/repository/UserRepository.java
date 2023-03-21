@@ -11,7 +11,7 @@ public interface UserRepository {
 
     boolean existsByName(String userName);
     void save(User user);
-    Optional<UserInMemoryEntity> getUserById(UUID userId);
+    User getUserById(UUID userId);
     void update(User user);
 
 }

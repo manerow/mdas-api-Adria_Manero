@@ -39,7 +39,7 @@ public class UserController {
 
     @PostMapping("/add-favorite-pokemon")
     public ResponseEntity<ApiResponse<User>> addFavoritePokemon(
-            @RequestHeader("userId") String userId,
+            @RequestHeader("user_id") String userId,
             @RequestBody AddFavoritePokemonRequest request) {
 
         User result;

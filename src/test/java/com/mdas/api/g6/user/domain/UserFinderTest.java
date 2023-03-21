@@ -17,7 +17,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import java.util.Optional;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -50,8 +49,7 @@ public class UserFinderTest {
         obj.setId(objUser.getId().getId());
         obj.setName(objUser.getName().getName());
 
-        when(userRepositoryMock.getUserById(Mockito.any(UUID.class))).thenReturn(Optional.of(obj));
-        when(userInMemoryMapper.toDomain(Mockito.any(UserInMemoryEntity.class))).thenReturn(objUser);
+        when(userRepositoryMock.getUserById(Mockito.any(UUID.class))).thenReturn(objUser);
 
         // WHEN
         User objFinder = userFinder.getUserById(objUser.getId().getId());
@@ -69,7 +67,7 @@ public class UserFinderTest {
         UserId userId = UserIdMother.random();
 
         // WHEN
-        when(userRepositoryMock.getUserById(Mockito.any(UUID.class))).thenReturn(Optional.empty());
+        when(userRepositoryMock.getUserById(Mockito.any(UUID.class))).thenReturn(null);
 
         assertThrows(UserNotFoundException.class, () -> userFinder.getUserById(userId.getId()));
 
