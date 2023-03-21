@@ -2,7 +2,7 @@ package com.mdas.api.g6.pokemon.infrastructure.http.controller;
 
 import com.mdas.api.g6.pokemon.application.GetPokemonByName;
 import com.mdas.api.g6.pokemon.domain.Pokemon;
-import com.mdas.api.g6.pokemon.domain.exception.PokeApiConnectionErrorException;
+import com.mdas.api.g6.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.shared.infrastructure.controller.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,7 @@ public class PokemonRESTController {
         }  catch (PokemonNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(new ApiResponse<>(HttpStatus.NOT_FOUND, e.getMessage(), null));
-        } catch (PokeApiConnectionErrorException e) {
+        } catch (RepositoryUnavailableException e) {
             return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT)
                     .body(new ApiResponse<>(HttpStatus.REQUEST_TIMEOUT, e.getMessage(), null));
         } catch (Exception e) {

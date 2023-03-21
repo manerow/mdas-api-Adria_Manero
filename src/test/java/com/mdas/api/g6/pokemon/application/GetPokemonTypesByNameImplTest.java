@@ -3,7 +3,7 @@ package com.mdas.api.g6.pokemon.application;
 import com.mdas.api.g6.pokemon.creator.PokemonCreator;
 import com.mdas.api.g6.pokemon.application.impl.GetPokemonTypesByNameImpl;
 import com.mdas.api.g6.pokemon.domain.Pokemon;
-import com.mdas.api.g6.pokemon.domain.exception.PokeApiConnectionErrorException;
+import com.mdas.api.g6.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokemon.domain.services.PokemonDomainService;
 import com.mdas.api.g6.pokemon.domain.valueobject.PokemonName;
@@ -33,7 +33,7 @@ public class GetPokemonTypesByNameImplTest {
         pokemonDomainService = mock(PokemonDomainService.class);
     }
 
-    private void when() throws PokemonNotFoundException, PokeApiConnectionErrorException {
+    private void when() throws PokemonNotFoundException, RepositoryUnavailableException {
         Mockito.when(pokemonDomainService.getPokemonByName(Mockito.any(PokemonName.class)))
                 .thenReturn(PokemonCreator.createPokemon());
 
@@ -42,7 +42,7 @@ public class GetPokemonTypesByNameImplTest {
 
     @Test
     @DisplayName("test1")
-    public void test1 () throws PokemonNotFoundException, PokeApiConnectionErrorException {
+    public void test1 () throws PokemonNotFoundException, RepositoryUnavailableException {
         initMock();
         when();
 

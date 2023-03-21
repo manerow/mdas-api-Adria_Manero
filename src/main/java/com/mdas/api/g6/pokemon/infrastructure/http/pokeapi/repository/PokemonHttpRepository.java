@@ -1,6 +1,6 @@
 package com.mdas.api.g6.pokemon.infrastructure.http.pokeapi.repository;
 
-import com.mdas.api.g6.pokemon.domain.exception.PokeApiConnectionErrorException;
+import com.mdas.api.g6.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokemon.domain.valueobject.PokemonName;
 import com.mdas.api.g6.pokemon.infrastructure.http.pokeapi.entity.PokemonApiEntity;
@@ -18,7 +18,7 @@ public class PokemonHttpRepository {
     @Value("${pokeapi.url}")
     private String baseUrl;
 
-    public PokemonApiEntity getPokemonByName(PokemonName pokemonName) throws PokemonNotFoundException, PokeApiConnectionErrorException {
+    public PokemonApiEntity getPokemonByName(PokemonName pokemonName) throws PokemonNotFoundException, RepositoryUnavailableException {
         String url = baseUrl + "/pokemon/" + pokemonName.getName();
         try {
             ResponseEntity<PokemonApiEntity> response = restTemplate.getForEntity(url, PokemonApiEntity.class);
@@ -26,7 +26,7 @@ public class PokemonHttpRepository {
         } catch (HttpClientErrorException.NotFound e) {
             throw new PokemonNotFoundException();
         } catch (RestClientException e) {
-            throw new PokeApiConnectionErrorException();
+            throw new RepositoryUnavailableException();
         }
     }
 }

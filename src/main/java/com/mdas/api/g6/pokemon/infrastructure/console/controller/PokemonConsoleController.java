@@ -1,7 +1,7 @@
 package com.mdas.api.g6.pokemon.infrastructure.console.controller;
 
 import com.mdas.api.g6.pokemon.application.GetPokemonByName;
-import com.mdas.api.g6.pokemon.domain.exception.PokeApiConnectionErrorException;
+import com.mdas.api.g6.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokemon.domain.valueobject.PokemonType;
 import com.mdas.api.g6.pokemon.domain.valueobject.PokemonTypes;
@@ -52,7 +52,7 @@ public class PokemonConsoleController {
         PokemonTypes pokemonTypes;
         try {
             pokemonTypes = getPokemonTypesByName.execute(pokemonName).getTypes();
-        } catch (PokemonNotFoundException | PokeApiConnectionErrorException e) {
+        } catch (PokemonNotFoundException | RepositoryUnavailableException e) {
             System.out.println(
                     "Error occurred trying to fetch pokemon types.\n" +
                     "Error: " + e.getMessage()
