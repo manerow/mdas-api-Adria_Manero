@@ -1,6 +1,6 @@
-package com.mdas.api.g6.application;
+package com.mdas.api.g6.pokemon.application;
 
-import com.mdas.api.g6.creator.PokemonCreator;
+import com.mdas.api.g6.pokemon.creator.PokemonCreator;
 import com.mdas.api.g6.pokemon.application.impl.GetPokemonTypesByNameImpl;
 import com.mdas.api.g6.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokemon.domain.exception.PokeApiConnectionErrorException;

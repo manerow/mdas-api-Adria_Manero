@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserName {
-    private String name;
+public class FavouritePokemon {
+    private Integer id;
 }
