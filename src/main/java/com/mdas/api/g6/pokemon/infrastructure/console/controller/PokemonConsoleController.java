@@ -1,6 +1,6 @@
 package com.mdas.api.g6.pokemon.infrastructure.console.controller;
 
-import com.mdas.api.g6.pokemon.application.GetPokemonTypesByName;
+import com.mdas.api.g6.pokemon.application.GetPokemonByName;
 import com.mdas.api.g6.pokemon.domain.exception.PokeApiConnectionErrorException;
 import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokemon.domain.valueobject.PokemonType;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Component
 public class PokemonConsoleController {
 
-    private final GetPokemonTypesByName getPokemonTypesByName;
+    private final GetPokemonByName getPokemonTypesByName;
 
     /**
      * Handles the different user commands.
