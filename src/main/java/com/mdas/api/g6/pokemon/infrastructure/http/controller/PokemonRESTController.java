@@ -1,9 +1,9 @@
 package com.mdas.api.g6.pokemon.infrastructure.http.controller;
 
-import com.mdas.api.g6.pokemon.application.GetPokemonByName;
+import com.mdas.api.g6.pokemon.application.GetPokemonByNameUseCase;
 import com.mdas.api.g6.pokemon.domain.Pokemon;
-import com.mdas.api.g6.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
+import com.mdas.api.g6.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.shared.infrastructure.controller.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PokemonRESTController {
 
-    private final GetPokemonByName getApiPokemonTypesByName;
+    private final GetPokemonByNameUseCase getPokemonByNameUseCase;
 
     @GetMapping(value = "/getType")
     public ResponseEntity<ApiResponse<Pokemon>> getPokemon(@RequestParam(value = "pokemonName") String pokemonName) {
         Pokemon pokemon;
         try {
-            pokemon = getApiPokemonTypesByName.execute(pokemonName);
+            pokemon = getPokemonByNameUseCase.execute(pokemonName);
         }  catch (PokemonNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(new ApiResponse<>(HttpStatus.NOT_FOUND, e.getMessage(), null));

@@ -1,7 +1,6 @@
 package com.mdas.api.g6.pokemon.application;
 
 import com.mdas.api.g6.pokemon.creator.PokemonCreator;
-import com.mdas.api.g6.pokemon.application.impl.GetPokemonTypesByNameImpl;
 import com.mdas.api.g6.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokemon.domain.exception.PokemonNotFoundException;
@@ -24,12 +23,12 @@ import static org.mockito.Mockito.mock;
 public class GetPokemonTypesByNameImplTest {
 
 
-    GetPokemonTypesByNameImpl service;
+    GetPokemonByNameUseCase service;
 
     PokemonDomainService pokemonDomainService;
 
     private void initMock() {
-        service = mock(GetPokemonTypesByNameImpl.class);
+        service = mock(GetPokemonByNameUseCase.class);
         pokemonDomainService = mock(PokemonDomainService.class);
     }
 
@@ -37,7 +36,7 @@ public class GetPokemonTypesByNameImplTest {
         Mockito.when(pokemonDomainService.getPokemonByName(Mockito.any(PokemonName.class)))
                 .thenReturn(PokemonCreator.createPokemon());
 
-        service = new GetPokemonTypesByNameImpl(pokemonDomainService);
+        service = new GetPokemonByNameUseCase(pokemonDomainService);
     }
 
     @Test

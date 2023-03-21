@@ -1,4 +1,4 @@
-package com.mdas.api.g6.pokemon.application.impl;
+package com.mdas.api.g6.pokemon.application;
 
 import com.mdas.api.g6.pokemon.application.GetPokemonByName;
 import com.mdas.api.g6.pokemon.domain.Pokemon;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class GetPokemonTypesByNameImpl implements GetPokemonByName {
+public class GetPokemonByNameUseCase implements GetPokemonByName {
 
     private final PokemonDomainService pokemonDomainService;
 
