@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class InMemoryUserAdapter implements UserRepository {
+public class UserInMemoryAdapter implements UserRepository {
 
     private final UserInMemoryRepository userInMemoryRepository;
     private final UserInMemoryMapper userInMemoryMapper;

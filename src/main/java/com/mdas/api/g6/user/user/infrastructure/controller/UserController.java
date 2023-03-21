@@ -46,9 +46,15 @@ public class UserController {
 
         try {
             result = addPokemonFavoriteUseCase.execute(userId, request);
-        } catch (PokemonAlreadyAddException | UserNotFoundException e) {
+        } catch( UserNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(HttpStatus.NOT_FOUND, e.getMessage(), null));
+        } catch (PokemonAlreadyAddException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(new ApiResponse<>(HttpStatus.CONFLICT, e.getMessage(), null));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ApiResponse<>(HttpStatus.BAD_REQUEST, e.getMessage(), null));
         }
 
         return ResponseEntity.status(HttpStatus.CREATED)

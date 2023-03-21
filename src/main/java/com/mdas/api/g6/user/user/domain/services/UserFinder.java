@@ -14,17 +14,17 @@ public class UserFinder {
 
     private UserRepository userRepository;
     public User getUserById(UUID userId) throws UserNotFoundException {
+        User result = userRepository.getUserById(userId);
+        guard(userId, result);
 
-       User result = userRepository.getUserById(userId);
-
-       if(result == null){
-           throw new UserNotFoundException("User not found: " + userId.toString());
-       }
-
-       return result;
+        return result;
     }
 
-
+    private void guard(UUID userId, User result) throws UserNotFoundException {
+        if (result == null) {
+            throw new UserNotFoundException("User not found: " + userId.toString());
+        }
+    }
 
 
 }
