@@ -1,16 +1,15 @@
-package com.mdas.api.g6.user.application;
+package com.mdas.api.g6.user.user.application;
 
-import com.mdas.api.g6.user.user.application.CreateUser;
 import com.mdas.api.g6.user.user.domain.User;
 import com.mdas.api.g6.user.user.domain.exception.UserAlreadyExistsException;
 import com.mdas.api.g6.user.user.domain.services.UserCreator;
 import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemons;
 import com.mdas.api.g6.user.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.user.domain.valueobject.UserName;
-import com.mdas.api.g6.user.objectmother.FavoritePokemonsMother;
-import com.mdas.api.g6.user.objectmother.UserIdMother;
-import com.mdas.api.g6.user.objectmother.UserMother;
-import com.mdas.api.g6.user.objectmother.UserNameMother;
+import com.mdas.api.g6.user.user.objectmother.FavoritePokemonsMother;
+import com.mdas.api.g6.user.user.objectmother.UserIdMother;
+import com.mdas.api.g6.user.user.objectmother.UserMother;
+import com.mdas.api.g6.user.user.objectmother.UserNameMother;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

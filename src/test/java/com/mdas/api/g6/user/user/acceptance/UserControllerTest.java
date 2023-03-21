@@ -1,4 +1,4 @@
-package com.mdas.api.g6.user.acceptance;
+package com.mdas.api.g6.user.user.acceptance;
 
 import com.mdas.api.g6.shared.infrastructure.controller.dto.ApiResponse;
 import com.mdas.api.g6.user.user.domain.User;

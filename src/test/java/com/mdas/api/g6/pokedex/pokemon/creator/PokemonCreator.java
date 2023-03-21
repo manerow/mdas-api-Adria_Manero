@@ -1,4 +1,4 @@
-package com.mdas.api.g6.pokemon.creator;
+package com.mdas.api.g6.pokedex.pokemon.creator;
 
 import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonName;

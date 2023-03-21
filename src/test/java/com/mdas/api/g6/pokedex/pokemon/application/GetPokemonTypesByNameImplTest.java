@@ -1,7 +1,6 @@
-package com.mdas.api.g6.pokemon.application;
+package com.mdas.api.g6.pokedex.pokemon.application;
 
-import com.mdas.api.g6.pokedex.pokemon.application.GetPokemonByNameUseCase;
-import com.mdas.api.g6.pokemon.creator.PokemonCreator;
+import com.mdas.api.g6.pokedex.pokemon.creator.PokemonCreator;
 import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.PokemonNotFoundException;

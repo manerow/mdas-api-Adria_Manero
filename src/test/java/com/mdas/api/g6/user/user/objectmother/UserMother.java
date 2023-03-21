@@ -1,4 +1,4 @@
-package com.mdas.api.g6.user.objectmother;
+package com.mdas.api.g6.user.user.objectmother;
 
 import com.mdas.api.g6.user.user.domain.User;
 import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemons;
