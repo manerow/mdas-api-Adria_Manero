@@ -22,8 +22,8 @@ public class PokemonRESTController {
 
     private final GetPokemonByNameUseCase getPokemonByNameUseCase;
 
-    @GetMapping(value = "/getType")
-    public ResponseEntity<ApiResponse<Pokemon>> getPokemon(@RequestParam(value = "pokemonName") String pokemonName) {
+    @GetMapping(value = "/type")
+    public ResponseEntity<ApiResponse<Pokemon>> getPokemon(@RequestParam(value = "name") String pokemonName) {
         Pokemon pokemon;
         try {
             pokemon = getPokemonByNameUseCase.execute(pokemonName);
