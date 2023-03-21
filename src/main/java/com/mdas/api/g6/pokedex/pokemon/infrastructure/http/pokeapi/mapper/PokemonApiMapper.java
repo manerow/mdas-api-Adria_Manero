@@ -1,6 +1,7 @@
 package com.mdas.api.g6.pokedex.pokemon.infrastructure.http.pokeapi.mapper;
 
 import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
+import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonId;
 import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonName;
 import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonTypes;
 import com.mdas.api.g6.pokedex.pokemon.infrastructure.http.pokeapi.entity.PokemonApiEntity;
@@ -15,9 +16,15 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface PokemonApiMapper {
+    @Mapping(target = "id", qualifiedByName = "mapId")
     @Mapping(target = "name", qualifiedByName = "mapName")
     @Mapping(target = "types", qualifiedByName = "mapTypes")
     Pokemon toDomain(PokemonApiEntity pokemonApiEntity);
+
+    @Named("mapId")
+    default PokemonId mapName(Integer id) {
+        return new PokemonId(id);
+    }
 
     @Named("mapName")
     default PokemonName mapName(String name) {
