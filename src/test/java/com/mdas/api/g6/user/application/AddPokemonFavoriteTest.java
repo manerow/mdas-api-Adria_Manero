@@ -1,6 +1,5 @@
 package com.mdas.api.g6.user.application;
 
-import com.mdas.api.g6.user.application.impl.AddPokemonFavorite;
 import com.mdas.api.g6.user.domain.User;
 import com.mdas.api.g6.user.domain.exception.PokemonAlreadyAddException;
 import com.mdas.api.g6.user.domain.exception.UserNotFoundException;
@@ -32,7 +31,7 @@ public class AddPokemonFavoriteTest {
     private UserAddPokemonFavorite userAddPokemonFavorite;
 
     @InjectMocks
-    private AddPokemonFavorite addPokemonFavorite;
+    private AddPokemonFavoriteUseCase addPokemonFavorite;
 
     @Test
     void shouldAddPokemonFavoriteSuccessfully() throws PokemonAlreadyAddException, UserNotFoundException {

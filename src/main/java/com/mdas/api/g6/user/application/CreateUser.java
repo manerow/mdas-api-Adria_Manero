@@ -1,6 +1,5 @@
-package com.mdas.api.g6.user.application.impl;
+package com.mdas.api.g6.user.application;
 
-import com.mdas.api.g6.user.application.CreateUserUseCase;
 import com.mdas.api.g6.user.domain.User;
 import com.mdas.api.g6.user.domain.exception.UserAlreadyExistsException;
 import com.mdas.api.g6.user.domain.services.UserCreator;
@@ -13,7 +12,7 @@ import java.util.UUID;
 
 @Service
 @AllArgsConstructor
-public class CreateUser implements CreateUserUseCase {
+public class CreateUser {
     private UserCreator userCreator;
 
     public User execute(String name) throws UserAlreadyExistsException {

@@ -2,7 +2,7 @@ package com.mdas.api.g6.user.infrastructure.controller;
 
 import com.mdas.api.g6.shared.infrastructure.controller.ApiResponse;
 import com.mdas.api.g6.user.application.AddPokemonFavoriteUseCase;
-import com.mdas.api.g6.user.application.CreateUserUseCase;
+import com.mdas.api.g6.user.application.CreateUser;
 import com.mdas.api.g6.user.domain.User;
 import com.mdas.api.g6.user.domain.exception.PokemonAlreadyAddException;
 import com.mdas.api.g6.user.domain.exception.UserAlreadyExistsException;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RequiredArgsConstructor
 public class UserController {
-    private final CreateUserUseCase createUserUseCase;
+    private final CreateUser createUserUseCase;
     private final AddPokemonFavoriteUseCase addPokemonFavoriteUseCase;
 
     @PostMapping(value = "/create")
