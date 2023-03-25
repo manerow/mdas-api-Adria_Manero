@@ -1,7 +1,7 @@
 package com.mdas.api.g6;
 
 
-import com.mdas.api.g6.pokedex.pokemon.infrastructure.console.controller.PokemonConsoleController;
+import com.mdas.api.g6.pokedex.pokemonType.infrastructure.console.controller.PokemonConsoleController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

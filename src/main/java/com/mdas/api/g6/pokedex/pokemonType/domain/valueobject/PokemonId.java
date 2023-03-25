@@ -1,4 +1,4 @@
-package com.mdas.api.g6.pokedex.pokemon.domain.valueobject;
+package com.mdas.api.g6.pokedex.pokemonType.domain.valueobject;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PokemonId {
-
     private Integer id;
 }
-
