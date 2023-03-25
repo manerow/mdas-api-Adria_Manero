@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class PokeSearcher {
+public class PokemonFinder {
     private final PokeRepository pokeRepository;
 
     public Pokemon getPokemonById(PokemonId id)
