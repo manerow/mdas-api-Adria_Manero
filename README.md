@@ -16,7 +16,11 @@ docker build -t mdas-api-g6:1.0.0 .
 ```
 docker run -it --rm --name mdas-api-g6 -p 9091:9091 mdas-api-g6:1.0.0
 ```
-
+### Test
+To run the application tests you can simply use the `gradlew` script within the project root 
+```
+./gradlew clean test
+```
 ### Console
 
 To run the application on the console, follow the steps below:
@@ -40,7 +44,7 @@ Enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon
     
     `Body: { name: string }`
     ``` bash
-    curl -s -X POST -H "Content-Type: application/json" -d '{"name": "John Doe"}' http://localhost:9091/ms-ne-pokemon/v1/user/create | jq
+    curl -s -X POST -H "Content-Type: application/json" -d '{ "id": 1, "name": "John Doe"}' http://localhost:9091/ms-ne-pokemon/v1/user/create | jq
     ```
 * Add a pokemon to favorites: 
 
@@ -50,11 +54,18 @@ Enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon
 
   `Header: user_id: string`
     ``` bash
-    curl -s -X POST -H "Content-Type: application/json" -H "user_id: <user_id>" -d '{"pokemonId": 25}' http://localhost:9091/ms-ne-pokemon/v1/user/add-favorite-pokemon | jq
+    curl -s -X POST -H "Content-Type: application/json" -H "user_id: 1" -d '{"pokemonId": 25}' http://localhost:9091/ms-ne-pokemon/v1/user/add-favorite-pokemon | jq
     ```
-  Note that you may get `<user_id>` from the "Create a new  User" call response.
-  
-  You can generate invalid UUIDs from here: [Random UUID Generator](https://www.uuidtools.com/v4)
+  Note that you may use the same `user_id` from the "Create a new  User" call.
+
+
+* Get a pokemon details (ID, Name, Height and Weight):
+
+  `[GET] http://localhost:9091/ms-ne-pokemon/v1/pokemon/detail?id=<pokemon_id>`
+
+    ```bash
+    curl -s -X GET "http://localhost:9091/ms-ne-pokemon/v1/pokemon/detail?id=448" | jq
+    ```
 ## Technologies Used
 
 - Java

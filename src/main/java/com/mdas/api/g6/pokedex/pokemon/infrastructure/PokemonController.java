@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/pokemon-detail")
+@RequestMapping("/pokemon")
 @Slf4j
 @RequiredArgsConstructor
 public class PokemonController {
     private final GetPokemonByIdUseCase getPokemonByIdUseCase;
 
-    @GetMapping()
+    @GetMapping(value = "/detail")
     public ResponseEntity<ApiResponse<Pokemon>> getPokemonById(@RequestParam(value = "id") Integer idPokemon) {
         Pokemon pokemon;
         try {

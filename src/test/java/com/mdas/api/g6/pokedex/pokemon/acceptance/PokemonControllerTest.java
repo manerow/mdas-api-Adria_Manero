@@ -32,7 +32,7 @@ public class PokemonControllerTest {
         int pokemonId = 25;
 
         // When
-        ResponseEntity<ApiResponse<Pokemon>> response = restTemplate.exchange("/pokemon-detail?id=" + pokemonId,
+        ResponseEntity<ApiResponse<Pokemon>> response = restTemplate.exchange("/pokemon/detail?id=" + pokemonId,
                 HttpMethod.GET, null, ParameterizedTypeReference.forType(TypeUtils.parameterize(ApiResponse.class, Pokemon.class)));
 
         // Then
@@ -47,7 +47,7 @@ public class PokemonControllerTest {
         int pokemonId = 1000000;
 
         // When
-        ResponseEntity<ApiResponse<Pokemon>> response = restTemplate.exchange("/pokemon-detail?id=" + pokemonId,
+        ResponseEntity<ApiResponse<Pokemon>> response = restTemplate.exchange("/pokemon/detail?id=" + pokemonId,
                 HttpMethod.GET, null, ParameterizedTypeReference.forType(TypeUtils.parameterize(ApiResponse.class, Pokemon.class)));
 
         // Then
