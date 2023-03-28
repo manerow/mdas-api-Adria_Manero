@@ -7,8 +7,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PokemonId {
-
-    private Integer id;
+public class PokemonHeight {
+    double value;
 }
-
