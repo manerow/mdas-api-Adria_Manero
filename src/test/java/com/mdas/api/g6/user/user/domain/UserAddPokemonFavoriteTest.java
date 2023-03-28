@@ -40,12 +40,12 @@ public class UserAddPokemonFavoriteTest {
         UserName userName = UserNameMother.random();
 
         //WHEN
-        when(userRepositoryMock.existsByName(userName.getName())).thenReturn(false);
+        when(userRepositoryMock.existsById(userId)).thenReturn(false);
 
         User objUser = userCreator.create(userId, userName);
         objUser.getFavoritePokemons().getFavoritePokemons().add(new FavoritePokemon(23));
 
-        User result = userAddPokemonFavorite.addPokemonFavorite(objUser,26);
+        User result = userAddPokemonFavorite.addPokemonFavorite(objUser,new FavoritePokemon(26));
 
         assertTrue(result.getFavoritePokemons().getFavoritePokemons().contains(new FavoritePokemon(26)));
     }
@@ -58,12 +58,12 @@ public class UserAddPokemonFavoriteTest {
         UserName userName = UserNameMother.random();
 
         // WHEN
-        when(userRepositoryMock.existsByName(userName.getName())).thenReturn(false);
+        when(userRepositoryMock.existsById(userId)).thenReturn(false);
 
         User objUser = userCreator.create(userId, userName);
         objUser.getFavoritePokemons().getFavoritePokemons().add(new FavoritePokemon(23));
 
-        assertThrows(PokemonAlreadyAddException.class, () -> userAddPokemonFavorite.addPokemonFavorite(objUser,23));
+        assertThrows(PokemonAlreadyAddException.class, () -> userAddPokemonFavorite.addPokemonFavorite(objUser,new FavoritePokemon(23)));
     }
 
 }

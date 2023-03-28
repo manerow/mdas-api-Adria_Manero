@@ -1,24 +1,21 @@
 package com.mdas.api.g6.pokedex.pokemonType.application;
 
-import com.mdas.api.g6.pokedex.pokemonType.creator.PokemonCreator;
 import com.mdas.api.g6.pokedex.pokemonType.domain.Pokemon;
 import com.mdas.api.g6.pokedex.pokemonType.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokedex.pokemonType.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokedex.pokemonType.domain.services.PokemonSearcher;
 import com.mdas.api.g6.pokedex.pokemonType.domain.valueobject.PokemonName;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
+import com.mdas.api.g6.pokedex.pokemonType.objectmother.PokemonMother;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.mockito.Mockito.mock;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class GetPokemonByNameUseCaseTest {
@@ -27,19 +24,19 @@ public class GetPokemonByNameUseCaseTest {
     private PokemonSearcher pokemonSearcher;
 
     @InjectMocks
-    private GetPokemonByNameUseCase service;
+    private GetPokemonByNameUseCase getPokemonByNameUseCase;
 
     @Test
     public void shouldGetPokemonByName() throws PokemonNotFoundException, RepositoryUnavailableException {
         // Given
-        Mockito.when(pokemonSearcher.getPokemonByName(Mockito.any(PokemonName.class)))
-                .thenReturn(PokemonCreator.createPokemon());
-
+        Pokemon pokemon = PokemonMother.random();
+        when(pokemonSearcher.getPokemonByName(Mockito.any(PokemonName.class)))
+                .thenReturn(pokemon);
         // When
-        Pokemon result = service.execute("lucario");
-
+        Pokemon result = getPokemonByNameUseCase.execute(pokemon.getName().getName());
         // Then
-        Assertions.assertNotNull(result);
+        assertNotNull(result);
+        assertEquals(pokemon.getId(), result.getId());
     }
 }
 

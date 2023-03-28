@@ -18,16 +18,16 @@ public class UserCreator {
 
     private UserRepository userRepository;
 
-    public User create(UserId id, UserName userName) throws UserAlreadyExistsException {
-        guard(userName.getName());
-        User user = new User(id, userName, new FavoritePokemons(new HashSet<>()));
+    public User create(UserId userId, UserName userName) throws UserAlreadyExistsException {
+        guard(userId);
+        User user = new User(userId, userName, new FavoritePokemons(new HashSet<>()));
         userRepository.save(user);
         return user;
     }
 
-    private void guard(String userName) throws UserAlreadyExistsException {
-        if (userRepository.existsByName(userName)) {
-            throw new UserAlreadyExistsException("User already exists with name: " + userName);
+    private void guard(UserId userId) throws UserAlreadyExistsException {
+        if (userRepository.existsById(userId)) {
+            throw new UserAlreadyExistsException("User already exists with id: " + userId.getId());
         }
     }
 }

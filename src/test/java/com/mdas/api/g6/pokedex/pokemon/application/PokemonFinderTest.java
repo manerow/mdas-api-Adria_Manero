@@ -3,18 +3,16 @@ package com.mdas.api.g6.pokedex.pokemon.application;
 import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.RepositoryUnavailableException;
-import com.mdas.api.g6.pokedex.pokemon.domain.repository.PokeRepository;
+import com.mdas.api.g6.pokedex.pokemon.domain.repository.PokemonRepository;
 import com.mdas.api.g6.pokedex.pokemon.domain.services.PokemonFinder;
 import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonId;
 import com.mdas.api.g6.pokedex.pokemon.objectmother.PokemonIdMother;
 import com.mdas.api.g6.pokedex.pokemon.objectmother.PokemonMother;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.when;
@@ -23,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @ExtendWith(MockitoExtension.class)
 public class PokemonFinderTest {
     @Mock
-    private PokeRepository pokeRepository;
+    private PokemonRepository pokemonRepository;
 
     @InjectMocks
     private PokemonFinder pokemonFinder;
@@ -33,7 +31,7 @@ public class PokemonFinderTest {
         // Given
         PokemonId pokemonId = PokemonIdMother.random();
         Pokemon expectedPokemon = PokemonMother.random();
-        when(pokeRepository.getPokemonById(Mockito.any())).thenReturn(expectedPokemon);
+        when(pokemonRepository.getPokemonById(Mockito.any())).thenReturn(expectedPokemon);
 
         // When
         Pokemon actualPokemon = pokemonFinder.getPokemonById(pokemonId);
@@ -46,7 +44,7 @@ public class PokemonFinderTest {
     void getPokemonById_withInvalidId_throwsPokemonNotFoundException() throws PokemonNotFoundException, RepositoryUnavailableException {
         // Given
         PokemonId pokemonId = PokemonIdMother.random();
-        when(pokeRepository.getPokemonById(Mockito.any()))
+        when(pokemonRepository.getPokemonById(Mockito.any()))
                 .thenThrow(new PokemonNotFoundException());
 
         // When and Then
@@ -57,7 +55,7 @@ public class PokemonFinderTest {
     void getPokemonById_withServiceUnavailable_throwsRepositoryUnavailableException() throws PokemonNotFoundException, RepositoryUnavailableException {
         // Given
         PokemonId pokemonId = PokemonIdMother.random();
-        when(pokeRepository.getPokemonById(Mockito.any()))
+        when(pokemonRepository.getPokemonById(Mockito.any()))
                 .thenThrow(new RepositoryUnavailableException());
 
         // When and Then

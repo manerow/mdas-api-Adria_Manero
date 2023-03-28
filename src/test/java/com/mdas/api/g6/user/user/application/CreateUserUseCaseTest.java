@@ -40,7 +40,7 @@ class CreateUserUseCaseTest {
         when(userCreatorMock.create(any(UserId.class), any(UserName.class))).thenReturn(user);
 
         // WHEN
-        User createdUser = createUserUseCase.execute(userName.getName());
+        User createdUser = createUserUseCase.execute(1L, userName.getName());
 
         // THEN
         assertNotNull(createdUser);
@@ -54,11 +54,12 @@ class CreateUserUseCaseTest {
     void shouldThrowExceptionWhenUserAlreadyExists() throws UserAlreadyExistsException {
         // Given
         UserName userName = UserNameMother.random();
+        UserId userId = UserIdMother.random();
         doThrow(UserAlreadyExistsException.class).when(userCreatorMock).create(any(UserId.class), any(UserName.class));
 
         // When
         Throwable exception = assertThrows(UserAlreadyExistsException.class, () -> {
-            createUserUseCase.execute(userName.getName());
+            createUserUseCase.execute(userId.getId(), userName.getName());
         });
 
         // Then

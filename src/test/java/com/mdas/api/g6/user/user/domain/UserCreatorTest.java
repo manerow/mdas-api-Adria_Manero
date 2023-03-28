@@ -31,7 +31,7 @@ class UserCreatorTest {
         // GIVEN
         UserId userId = UserIdMother.random();
         UserName userName = UserNameMother.random();
-        when(userRepositoryMock.existsByName(userName.getName())).thenReturn(false);
+        when(userRepositoryMock.existsById(userId)).thenReturn(false);
 
         // WHEN
         User createdUser = userCreator.create(userId, userName);
@@ -40,7 +40,7 @@ class UserCreatorTest {
         assertEquals(createdUser.getId(), userId);
         assertEquals(createdUser.getName(), userName);
         assertTrue(createdUser.getFavoritePokemons().getFavoritePokemons().isEmpty());
-        verify(userRepositoryMock, times(1)).existsByName(userName.getName());
+        verify(userRepositoryMock, times(1)).existsById(userId);
         verify(userRepositoryMock, times(1)).save(Mockito.any(User.class));
     }
 
@@ -49,11 +49,11 @@ class UserCreatorTest {
         // GIVEN
         UserId userId = UserIdMother.random();
         UserName userName = UserNameMother.random();
-        when(userRepositoryMock.existsByName(userName.getName())).thenReturn(true);
+        when(userRepositoryMock.existsById(userId)).thenReturn(true);
 
         // WHEN / THEN
         assertThrows(UserAlreadyExistsException.class, () -> userCreator.create(userId, userName));
-        verify(userRepositoryMock, times(1)).existsByName(userName.getName());
+        verify(userRepositoryMock, times(1)).existsById(userId);
         verify(userRepositoryMock, never()).save(any(User.class));
     }
 }

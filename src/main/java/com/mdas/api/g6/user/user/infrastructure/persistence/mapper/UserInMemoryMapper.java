@@ -11,7 +11,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
@@ -26,7 +25,7 @@ public interface UserInMemoryMapper {
     UserInMemoryEntity toEntity(User user);
 
     @Named("mapIdToDomain")
-    default UserId mapIdToDomain(UUID id) {
+    default UserId mapIdToDomain(Long id) {
         return new UserId(id);
     }
 
@@ -44,7 +43,7 @@ public interface UserInMemoryMapper {
     }
 
     @Named("mapIdToEntity")
-    default UUID mapIdToEntity(UserId userId) {
+    default Long mapIdToEntity(UserId userId) {
         return userId.getId();
     }
 

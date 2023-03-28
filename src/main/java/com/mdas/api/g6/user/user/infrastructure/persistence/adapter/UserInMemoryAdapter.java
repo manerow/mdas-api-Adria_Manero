@@ -2,12 +2,10 @@ package com.mdas.api.g6.user.user.infrastructure.persistence.adapter;
 
 import com.mdas.api.g6.user.user.domain.User;
 import com.mdas.api.g6.user.user.domain.repository.UserRepository;
+import com.mdas.api.g6.user.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.user.infrastructure.persistence.entity.UserInMemoryEntity;
 import com.mdas.api.g6.user.user.infrastructure.persistence.mapper.UserInMemoryMapper;
 import com.mdas.api.g6.user.user.infrastructure.persistence.repository.UserInMemoryRepository;
-import java.util.Optional;
-import java.util.UUID;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -19,8 +17,8 @@ public class UserInMemoryAdapter implements UserRepository {
     private final UserInMemoryMapper userInMemoryMapper;
 
     @Override
-    public boolean existsByName(String userName) {
-        return userInMemoryRepository.existsByName(userName);
+    public boolean existsById(UserId userId) {
+        return userInMemoryRepository.existsByName(userId.getId());
     }
 
     @Override
@@ -30,11 +28,12 @@ public class UserInMemoryAdapter implements UserRepository {
     }
 
     @Override
-    public User getUserById(UUID userId) {
-
-        Optional<UserInMemoryEntity> po = userInMemoryRepository.getUserById(userId);
-
-        return  po.isPresent() ? userInMemoryMapper.toDomain(po.get()) : null ;
+    public User getUserById(UserId userId) {
+        UserInMemoryEntity userInMemoryEntity = userInMemoryRepository.getUserById(userId.getId());
+        if (userInMemoryEntity == null) {
+            return null;
+        }
+        return userInMemoryMapper.toDomain(userInMemoryEntity);
     }
 
     @Override

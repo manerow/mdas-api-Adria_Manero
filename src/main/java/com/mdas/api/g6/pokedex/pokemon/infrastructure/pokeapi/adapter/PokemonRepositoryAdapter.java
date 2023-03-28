@@ -3,7 +3,7 @@ package com.mdas.api.g6.pokedex.pokemon.infrastructure.pokeapi.adapter;
 import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.RepositoryUnavailableException;
-import com.mdas.api.g6.pokedex.pokemon.domain.repository.PokeRepository;
+import com.mdas.api.g6.pokedex.pokemon.domain.repository.PokemonRepository;
 import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonId;
 import com.mdas.api.g6.pokedex.pokemon.infrastructure.pokeapi.entity.PokemonApiEntity;
 import com.mdas.api.g6.pokedex.pokemon.infrastructure.pokeapi.mapper.PokemonMapper;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class PokeRepositoryAdapter implements PokeRepository {
+public class PokemonRepositoryAdapter implements PokemonRepository {
 
     private final PokeHttpRepository pokeApiHttpRepository;
     private final PokemonMapper pokemonMapper;

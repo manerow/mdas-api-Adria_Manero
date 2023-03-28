@@ -13,19 +13,9 @@ public class UserAddPokemonFavorite {
 
     private final UserRepository userRepository;
 
-    public User addPokemonFavorite(User user, Integer pokemonId) throws PokemonAlreadyAddException {
-
-        guard(user, pokemonId);
-        user.getFavoritePokemons().getFavoritePokemons().add(new FavoritePokemon(pokemonId));
+    public User addPokemonFavorite(User user, FavoritePokemon favoritePokemon) throws PokemonAlreadyAddException {
+        user.addFavoritePokemon(favoritePokemon);
         userRepository.update(user);
-
         return user;
-    }
-
-    private void guard(User user, Integer pokemonId) throws PokemonAlreadyAddException {
-
-        if (user.getFavoritePokemons().getFavoritePokemons().contains(new FavoritePokemon(pokemonId))) {
-            throw new PokemonAlreadyAddException("Pokemon already add on list with Id: " + pokemonId);
-        }
     }
 }

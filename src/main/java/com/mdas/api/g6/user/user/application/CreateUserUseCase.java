@@ -8,14 +8,12 @@ import com.mdas.api.g6.user.user.domain.valueobject.UserName;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 @AllArgsConstructor
 public class CreateUserUseCase {
     private UserCreator userCreator;
 
-    public User execute(String name) throws UserAlreadyExistsException {
-        return userCreator.create(new UserId(UUID.randomUUID()), new UserName(name));
+    public User execute(Long id, String name) throws UserAlreadyExistsException {
+        return userCreator.create(new UserId(id), new UserName(name));
     }
 }

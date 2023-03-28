@@ -3,6 +3,8 @@ package com.mdas.api.g6.user.user.acceptance;
 import com.mdas.api.g6.shared.infrastructure.controller.dto.ApiResponse;
 import com.mdas.api.g6.user.user.domain.User;
 import com.mdas.api.g6.user.user.infrastructure.controller.dto.CreateUserRequest;
+import com.mdas.api.g6.user.user.objectmother.UserIdMother;
+import com.mdas.api.g6.user.user.objectmother.UserNameMother;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,7 +33,8 @@ class UserControllerTest {
     @Test
     public void testCreateUser() {
         // GIVEN
-        CreateUserRequest createUserRequest = new CreateUserRequest("Ash Ketchum");
+        CreateUserRequest createUserRequest = new CreateUserRequest(
+                UserIdMother.random().getId(), UserNameMother.random().getName());
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<CreateUserRequest> request = new HttpEntity<>(createUserRequest, headers);
@@ -48,13 +51,14 @@ class UserControllerTest {
         assertNotNull(response.getBody());
         assertNull(response.getBody().getMessage());
         assertNotNull(response.getBody().getData());
-        assertEquals(createUserRequest.getName(), response.getBody().getData().getName().getName());
+        assertEquals(createUserRequest.getId(), response.getBody().getData().getId().getId());
     }
 
     @Test
     public void testCreateUserWithExistingName() {
         // GIVEN
-        CreateUserRequest createUserRequest = new CreateUserRequest("Ash Ketchum");
+        CreateUserRequest createUserRequest = new CreateUserRequest(
+                UserIdMother.random().getId(), UserNameMother.random().getName());
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<CreateUserRequest> request = new HttpEntity<>(createUserRequest, headers);
@@ -77,7 +81,7 @@ class UserControllerTest {
         // THEN
         assertEquals(HttpStatus.CONFLICT, response1.getStatusCode());
         assertNotNull(response1.getBody());
-        assertEquals("User already exists with name: " + createUserRequest.getName(), response1.getBody().getMessage());
+        assertEquals("User already exists with id: " + createUserRequest.getId(), response1.getBody().getMessage());
         assertNull(response1.getBody().getData());
     }
 

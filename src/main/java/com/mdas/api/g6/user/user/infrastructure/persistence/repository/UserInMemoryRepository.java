@@ -10,21 +10,18 @@ import java.util.*;
 @RequiredArgsConstructor
 public class UserInMemoryRepository {
 
-    private final Map<UUID, UserInMemoryEntity> userMap = new HashMap<>();
+    private final Map<Long, UserInMemoryEntity> userMap = new HashMap<>();
 
-    public boolean existsByName(String userName) {
-        return userMap.values().stream()
-                .anyMatch(user -> user.getName().equals(userName));
+    public boolean existsByName(Long userId) {
+        return userMap.containsKey(userId);
     }
 
     public void save(UserInMemoryEntity userInMemoryEntity) {
         userMap.put(userInMemoryEntity.getId(), userInMemoryEntity);
     }
 
-    public Optional<UserInMemoryEntity> getUserById(UUID userId) {
-        return userMap.values().stream()
-                .filter(user -> user.getId().equals(userId))
-                .findFirst();
+    public UserInMemoryEntity getUserById(Long userId) {
+        return userMap.get(userId);
     }
 
     public void update(UserInMemoryEntity user) {

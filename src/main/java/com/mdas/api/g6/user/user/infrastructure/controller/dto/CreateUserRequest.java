@@ -11,6 +11,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateUserRequest {
+    @JsonProperty("id")
+    private Long id;
     @JsonProperty("name")
     private String name;
 }

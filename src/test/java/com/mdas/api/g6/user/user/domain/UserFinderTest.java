@@ -17,9 +17,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class UserFinderTest {
@@ -41,7 +41,7 @@ public class UserFinderTest {
         // GIVEN
         UserId userId = UserIdMother.random();
         UserName userName = UserNameMother.random();
-        when(userRepositoryMock.existsByName(userName.getName())).thenReturn(false);
+        when(userRepositoryMock.existsById(userId)).thenReturn(false);
 
         User objUser = userCreator.create(userId, userName);
 
@@ -49,10 +49,10 @@ public class UserFinderTest {
         obj.setId(objUser.getId().getId());
         obj.setName(objUser.getName().getName());
 
-        when(userRepositoryMock.getUserById(Mockito.any(UUID.class))).thenReturn(objUser);
+        when(userRepositoryMock.getUserById(Mockito.any(UserId.class))).thenReturn(objUser);
 
         // WHEN
-        User objFinder = userFinder.getUserById(objUser.getId().getId());
+        User objFinder = userFinder.getUserById(objUser.getId());
 
         assertEquals(objFinder.getId(), userId);
         assertEquals(objFinder.getName(), userName);
@@ -67,9 +67,9 @@ public class UserFinderTest {
         UserId userId = UserIdMother.random();
 
         // WHEN
-        when(userRepositoryMock.getUserById(Mockito.any(UUID.class))).thenReturn(null);
+        when(userRepositoryMock.getUserById(Mockito.any(UserId.class))).thenReturn(null);
 
-        assertThrows(UserNotFoundException.class, () -> userFinder.getUserById(userId.getId()));
+        assertThrows(UserNotFoundException.class, () -> userFinder.getUserById(userId));
 
     }
 }

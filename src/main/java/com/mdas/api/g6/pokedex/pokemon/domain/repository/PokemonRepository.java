@@ -5,6 +5,6 @@ import com.mdas.api.g6.pokedex.pokemon.domain.exception.PokemonNotFoundException
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonId;
 
-public interface PokeRepository {
+public interface PokemonRepository {
     Pokemon getPokemonById(PokemonId pokemonId) throws PokemonNotFoundException, RepositoryUnavailableException;
 }

@@ -27,7 +27,7 @@ public class UserController {
     public ResponseEntity<ApiResponse<User>> create(@RequestBody CreateUserRequest createUserRequest) {
         User user;
         try {
-            user = createUserUseCase.execute(createUserRequest.getName());
+            user = createUserUseCase.execute(createUserRequest.getId(), createUserRequest.getName());
         } catch (UserAlreadyExistsException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(new ApiResponse<>(HttpStatus.CONFLICT, e.getMessage(), null));
@@ -39,7 +39,7 @@ public class UserController {
 
     @PostMapping("/add-favorite-pokemon")
     public ResponseEntity<ApiResponse<User>> addFavoritePokemon(
-            @RequestHeader("user_id") String userId,
+            @RequestHeader("user_id") Long userId,
             @RequestBody AddFavoritePokemonRequest request) {
 
         User result;

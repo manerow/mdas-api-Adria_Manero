@@ -5,6 +5,7 @@ import com.mdas.api.g6.user.user.domain.exception.PokemonAlreadyAddException;
 import com.mdas.api.g6.user.user.domain.exception.UserNotFoundException;
 import com.mdas.api.g6.user.user.domain.services.UserAddPokemonFavorite;
 import com.mdas.api.g6.user.user.domain.services.UserFinder;
+import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemon;
 import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemons;
 import com.mdas.api.g6.user.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.user.domain.valueobject.UserName;
@@ -41,12 +42,12 @@ public class AddPokemonFavoriteTest {
         UserName userName = UserNameMother.random();
         User objUser = new User(userId, userName, new FavoritePokemons());
 
-        when(userAddPokemonFavorite.addPokemonFavorite(Mockito.any(User.class), Mockito.any(Integer.class))).thenReturn(objUser);
-        when(userFinder.getUserById(Mockito.any(UUID.class))).thenReturn(objUser);
+        when(userAddPokemonFavorite.addPokemonFavorite(Mockito.any(User.class), Mockito.any(FavoritePokemon.class))).thenReturn(objUser);
+        when(userFinder.getUserById(Mockito.any(UserId.class))).thenReturn(objUser);
         AddFavoritePokemonRequest request = new AddFavoritePokemonRequest();
         request.setPokemonId(23);
 
-        User result = addPokemonFavorite.execute(userId.getId().toString(), request);
+        User result = addPokemonFavorite.execute(userId.getId(), request);
 
         assertNotNull(result);
         assertNotNull(result.getId());
