@@ -1,12 +1,14 @@
-FROM gradle:6.9.1-jdk11 AS builder
-WORKDIR /app
+FROM openjdk:11-jre-slim as builder
+WORKDIR application
+COPY build/libs/mdas-api-g6.jar .
+RUN java -Djarmode=layertools -jar mdas-api-g6.jar extract
 
-COPY build.gradle .
+FROM openjdk:11-jre-slim
+WORKDIR application
+COPY --from=builder dependencies/ .
+COPY --from=builder spring-boot-loader/ .
+COPY --from=builder internal-dependencies/ .
+COPY --from=builder snapshot-dependencies/ .
+COPY --from=builder application/ .
 
-COPY src ./src
-RUN gradle clean build
-
-FROM openjdk:11-slim-buster
-WORKDIR /app
-COPY --from=builder /app/build/libs/*-SNAPSHOT.jar ./app.jar
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "org.springframework.boot.loader.JarLauncher"]

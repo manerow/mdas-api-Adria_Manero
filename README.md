@@ -32,39 +32,39 @@ Enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon
 ### Rest API
 * Get a pokemon's type:
     
-    `[GET] http://localhost:9091/ms-ne-pokemon/v1/pokemon/type?name=<pokemon_name>`
+    `[GET] http://localhost:8080/api/pokemon/type?name=<pokemon_name>`
   
     ```bash
-    curl -s -X GET "http://localhost:9091/ms-ne-pokemon/v1/pokemon/type?name=lucario" | jq
+    curl -s -X GET "http://localhost:8080/api/pokemon/type?name=lucario" | jq
     ```
 
 * Create a new User:
 
-    `[POST] http://localhost:9091/ms-ne-pokemon/v1/user/create` 
+    `[POST] http://localhost:8080/api/user/create` 
     
     `Body: { name: string }`
     ``` bash
-    curl -s -X POST -H "Content-Type: application/json" -d '{ "id": 1, "name": "John Doe"}' http://localhost:9091/ms-ne-pokemon/v1/user/create | jq
+    curl -s -X POST -H "Content-Type: application/json" -d '{ "id": 1, "name": "John Doe"}' http://localhost:8080/api/user/create | jq
     ```
 * Add a pokemon to favorites: 
 
-  `[POST] http://localhost:9091/ms-ne-pokemon/v1/user/add-favorite-pokemon`
+  `[POST] http://localhost:8080/api/user/add-favorite-pokemon`
 
   `Body: { pokemonId: int }`
 
   `Header: user_id: string`
     ``` bash
-    curl -s -X POST -H "Content-Type: application/json" -H "user_id: 1" -d '{"pokemonId": 25}' http://localhost:9091/ms-ne-pokemon/v1/user/add-favorite-pokemon | jq
+    curl -s -X POST -H "Content-Type: application/json" -H "user_id: 1" -d '{"pokemonId": 25}' http://localhost:8080/api/user/add-favorite-pokemon | jq
     ```
   Note that you may use the same `user_id` from the "Create a new  User" call.
 
 
 * Get a pokemon details (ID, Name, Height and Weight):
 
-  `[GET] http://localhost:9091/ms-ne-pokemon/v1/pokemon/detail?id=<pokemon_id>`
+  `[GET] http://localhost:8080/api/pokemon/detail?id=<pokemon_id>`
 
     ```bash
-    curl -s -X GET "http://localhost:9091/ms-ne-pokemon/v1/pokemon/detail?id=448" | jq
+    curl -s -X GET "http://localhost:8080/api/pokemon/detail?id=448" | jq
     ```
 ## Technologies Used
 

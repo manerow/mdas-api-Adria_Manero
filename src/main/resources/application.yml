@@ -1,7 +1,12 @@
 server:
-  port: 9091
+  port: 8080
   servlet:
-    context-path: /ms-ne-pokemon/v1
-   
+    context-path: /api
+
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+
 pokeapi:
     url: https://pokeapi.co/api/v2
