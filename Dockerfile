@@ -17,8 +17,8 @@ COPY build.gradle settings.gradle ./
 # Copy the source code into the container
 COPY src ./src
 
-# Run the Gradle wrapper build task with caching
-RUN ./gradlew clean build --no-daemon
+# Run the Gradle wrapper bootJar task
+RUN ./gradlew clean bootJar --no-daemon
 
 # Set the base image as the official OpenJDK image with JRE 11
 FROM openjdk:11-jre-slim
