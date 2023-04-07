@@ -6,10 +6,12 @@ import com.mdas.api.g6.pokedex.pokemonType.domain.exception.PokemonNotFoundExcep
 import com.mdas.api.g6.pokedex.pokemonType.domain.repository.PokemonRepository;
 import com.mdas.api.g6.pokedex.pokemonType.domain.valueobject.PokemonName;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
-@AllArgsConstructor
+@Component
+@RequiredArgsConstructor
 public class PokemonSearcher {
     private final PokemonRepository pokemonRepository;
 
