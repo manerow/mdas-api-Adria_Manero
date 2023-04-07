@@ -7,4 +7,5 @@ import com.mdas.api.g6.pokedex.pokemon.domain.valueobject.PokemonId;
 
 public interface PokemonRepository {
     Pokemon getPokemonById(PokemonId pokemonId) throws PokemonNotFoundException, RepositoryUnavailableException;
+    void addPokemonFavorite(PokemonId pokemonId);
 }

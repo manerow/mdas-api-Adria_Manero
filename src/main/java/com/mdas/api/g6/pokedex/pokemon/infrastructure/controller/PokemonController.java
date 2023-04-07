@@ -1,4 +1,4 @@
-package com.mdas.api.g6.pokedex.pokemon.infrastructure;
+package com.mdas.api.g6.pokedex.pokemon.infrastructure.controller;
 
 import com.mdas.api.g6.pokedex.pokemon.application.GetPokemonByIdUseCase;
 import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;

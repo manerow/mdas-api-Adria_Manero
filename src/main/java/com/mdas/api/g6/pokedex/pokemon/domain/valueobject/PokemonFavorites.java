@@ -9,7 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class PokemonId {
-    private int id;
+public class PokemonFavorites {
+    private int favorites;
 }
-
