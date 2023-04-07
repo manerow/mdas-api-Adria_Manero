@@ -5,11 +5,11 @@ import com.mdas.api.g6.user.user.domain.exception.PokemonAlreadyAddException;
 import com.mdas.api.g6.user.user.domain.repository.UserEventPublisher;
 import com.mdas.api.g6.user.user.domain.repository.UserRepository;
 import com.mdas.api.g6.user.user.domain.valueobject.PokemonId;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UserAddPokemonFavorite {
 
     private UserRepository userRepository;

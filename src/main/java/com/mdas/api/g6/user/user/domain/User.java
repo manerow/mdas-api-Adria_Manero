@@ -19,4 +19,5 @@ public class User {
     public void addFavoritePokemon(PokemonId pokemonId) throws PokemonAlreadyAddException {
         favoritePokemons.add(pokemonId);
     }
+
 }
