@@ -1,14 +1,36 @@
-FROM openjdk:11-jre-slim as builder
-WORKDIR application
-COPY build/libs/mdas-api-g6.jar .
-RUN java -Djarmode=layertools -jar mdas-api-g6.jar extract
+# Set the base image as the official OpenJDK image with JDK 11
+FROM openjdk:11-jdk-slim AS build
 
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy gradlew and gradle wrapper files
+COPY gradlew ./
+COPY gradle ./gradle
+
+# Grant execute permissions to gradlew script
+RUN chmod +x ./gradlew
+
+# Copy build files (build.gradle, settings.gradle, etc.)
+COPY build.gradle settings.gradle ./
+
+# Copy the source code into the container
+COPY src ./src
+
+# Run the Gradle wrapper build task with caching
+RUN ./gradlew clean build --no-daemon
+
+# Set the base image as the official OpenJDK image with JRE 11
 FROM openjdk:11-jre-slim
-WORKDIR application
-COPY --from=builder dependencies/ .
-COPY --from=builder spring-boot-loader/ .
-COPY --from=builder internal-dependencies/ .
-COPY --from=builder snapshot-dependencies/ .
-COPY --from=builder application/ .
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "org.springframework.boot.loader.JarLauncher"]
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the built JAR file from the build stage into the container
+COPY --from=build /app/build/libs/*.jar app.jar
+
+# Expose the application's port
+EXPOSE 8080
+
+# Set the entrypoint to run the Spring Boot application
+ENTRYPOINT ["java", "-jar", "app.jar"]

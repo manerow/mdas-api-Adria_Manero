@@ -9,13 +9,14 @@ services:
       - rabbitmq
     environment:
       - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
     networks:
       - rabbit-network
 
   rabbitmq:
     image: "rabbitmq:3-alpine"
     ports:
-      - "5672:5672"   # Default RabbitMQ port
+      - "5672:5672"
     networks:
       - rabbit-network
 
