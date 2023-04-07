@@ -19,7 +19,10 @@ docker run -it --rm --name mdas-api-g6 -p 9091:9091 mdas-api-g6:1.0.0
 ### Test
 To run the application tests you can simply use the `gradlew` script within the project root 
 ```
-./gradlew clean test
+./gradlew clean install
+```
+```
+./gradlew test
 ```
 ### Console
 
