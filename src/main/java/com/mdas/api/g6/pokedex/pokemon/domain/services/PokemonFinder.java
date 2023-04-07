@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class PokemonFinder {
-    private final PokemonRepository pokeRepository;
+    private PokemonRepository pokeRepository;
 
-    public Pokemon getPokemonById(PokemonId id)
+    public Pokemon find(PokemonId id)
             throws PokemonNotFoundException, RepositoryUnavailableException {
         return pokeRepository.getPokemonById(id);
     }

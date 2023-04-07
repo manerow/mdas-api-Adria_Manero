@@ -14,11 +14,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class GetPokemonByIdUseCase {
 
-    private final PokemonFinder pokemonDomainService;
+    private final PokemonFinder pokemonFinder;
 
     public Pokemon execute(Integer id)
             throws PokemonNotFoundException, RepositoryUnavailableException {
         PokemonId pokemonid = new PokemonId(id);
-        return pokemonDomainService.getPokemonById(pokemonid);
+        return pokemonFinder.find(pokemonid);
     }
 }
