@@ -5,6 +5,6 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FavoritePokemon {
-    private Integer id;
+public class PokemonId {
+    private int id;
 }

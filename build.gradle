@@ -30,42 +30,14 @@ dependencies {
 	implementation 'com.github.javafaker:javafaker:1.0.2' exclude module: 'org.yaml'
 	implementation 'org.yaml:snakeyaml:1.26'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.testcontainers:testcontainers:1.16.3'
+	testImplementation 'org.testcontainers:rabbitmq:1.16.3'
+	testImplementation 'org.testcontainers:junit-jupiter:1.16.3'
 }
 
 dependencyManagement {
 	imports {
 		mavenBom 'org.springframework.boot:spring-boot-dependencies:2.7.3'
-	}
-}
-
-bootJar {
-	archiveFileName = 'mdas-api-g6.jar'
-	manifest {
-		attributes 'Main-Class': 'com.mdas.api.g6.PokeApiApplication'
-	}
-	// Enable layered JAR
-	layered {
-		application {
-			intoLayer("spring-boot-loader") {
-				include("org/springframework/boot/loader/**")
-			}
-			intoLayer("application")
-		}
-		dependencies {
-			intoLayer("snapshot-dependencies") {
-				include("*:*:*SNAPSHOT")
-			}
-			intoLayer("internal-dependencies") {
-				include("mdas.api.g6:*")
-			}
-			intoLayer("dependencies")
-		}
-		layerOrder = ["dependencies",
-					  "spring-boot-loader",
-					  "internal-dependencies",
-					  "snapshot-dependencies",
-					  "application"
-		]
 	}
 }
 

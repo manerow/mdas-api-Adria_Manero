@@ -5,7 +5,7 @@ import com.mdas.api.g6.user.user.domain.exception.PokemonAlreadyAddException;
 import com.mdas.api.g6.user.user.domain.exception.UserNotFoundException;
 import com.mdas.api.g6.user.user.domain.services.UserAddPokemonFavorite;
 import com.mdas.api.g6.user.user.domain.services.UserFinder;
-import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemon;
+import com.mdas.api.g6.user.user.domain.valueobject.PokemonId;
 import com.mdas.api.g6.user.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.user.infrastructure.controller.dto.AddFavoritePokemonRequest;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +23,6 @@ public class AddPokemonFavoriteUseCase {
     public User execute(Long userId, AddFavoritePokemonRequest request)
             throws PokemonAlreadyAddException, UserNotFoundException, IllegalArgumentException {
         User user = userFinder.getUserById(new UserId(userId));
-        return userAddPokemonFavorite.addPokemonFavorite(user, new FavoritePokemon(request.getPokemonId()));
+        return userAddPokemonFavorite.addPokemonFavorite(user, new PokemonId(request.getPokemonId()));
     }
 }
