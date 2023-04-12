@@ -17,7 +17,7 @@ public class UserAddPokemonFavorite {
 
     public User addPokemonFavorite(User user, PokemonId pokemonId) throws PokemonAlreadyAddException {
         user.addFavoritePokemon(pokemonId);
-        userRepository.update(user);
+        userRepository.save(user);
         userEventPublisher.publishAddPokemonFavoriteEvent(pokemonId);
         return user;
     }
