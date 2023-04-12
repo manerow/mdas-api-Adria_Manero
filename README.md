@@ -1,37 +1,40 @@
 # Pokemon Type Retrieval Application
 
-A simple Spring Boot application that interacts with the PokeAPI to retrieve information about Pokemons. It is built using Domain Driven Design and  Hexagonal Architecture.
+A simple Spring Boot application that interacts with the PokeAPI to retrieve information about Pokemons. It is built using Domain Driven Design, Hexagonal Architecture and has inter-context communication via RabbitMQ events.
 
 ## Prerequisites
 * Docker
+* Docker compose
 * Curl
 * Jq (Not mandatory, just to beautify the curl response)
 ## Getting Started
-### Docker build
-This application can be built and executed using Docker. In order to do so, use the following commands:
+### Build the project
+The application can be built using the graddle wrapper in the project root.
 ```
-docker build -t mdas-api-g6:1.0.0 .
+./gradlew clean build
 ```
-
-```
-docker run -it --rm --name mdas-api-g6 -p 9091:9091 mdas-api-g6:1.0.0
-```
-### Test
-To run the application tests you can simply use the `gradlew` script within the project root 
-```
-./gradlew clean install
-```
+### Test suite run
+Although the test suite present on this application is run on every project build, it can be specifically run using the following gradle wrapper command:
 ```
 ./gradlew test
 ```
+### Deploy the project
+To deploy the application and all the services it requires (i.e the RabbitMQ queue) use the following command:
+```
+docker compose up -d
+```
+
 ### Console
 
 To run the application on the console, follow the steps below:
 
-After running the above Docker interactive run command, the application should have started and prompt the user to enter a command.
-
-Enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon.
-
+After running the above Docker compose command, we must attach a shell to the application service in order to provide commands through stdin.
+```
+docker attach mdas-api-Adria-Manero
+```
+Since the application has already started on detached mode, it wont display any instructions message when attaching.  
+When attached, just enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon.  
+Bear in mind that if the application is closed through the shell, the docker container will crash and therefore will stop. In order to close the attached shell properly, use `Ctrl + P` and then `Ctrl + Q`
 ### Rest API
 * Get a pokemon's type:
     
@@ -57,12 +60,12 @@ Enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon
 
   `Header: user_id: string`
     ``` bash
-    curl -s -X POST -H "Content-Type: application/json" -H "user_id: 1" -d '{"pokemonId": 25}' http://localhost:8080/api/user/add-favorite-pokemon | jq
+    curl -s -X POST -H "Content-Type: application/json" -H "user_id: 1" -d '{"pokemonId": 448}' http://localhost:8080/api/user/add-favorite-pokemon | jq
     ```
   Note that you may use the same `user_id` from the "Create a new  User" call.
 
 
-* Get a pokemon details (ID, Name, Height and Weight):
+* Get a pokemon details (ID, Name, Height, Weight and Favorites):
 
   `[GET] http://localhost:8080/api/pokemon/detail?id=<pokemon_id>`
 
@@ -73,6 +76,7 @@ Enter `pokemon type <pokemon_name>` to obtain the types of the specified Pokemon
 
 - Java
 - Spring Boot
+- RabbitMQ
 - Gradle
 
 ## Project Structure
