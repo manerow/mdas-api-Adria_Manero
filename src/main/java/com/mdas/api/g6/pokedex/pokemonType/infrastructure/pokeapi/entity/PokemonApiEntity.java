@@ -1,4 +1,4 @@
-package com.mdas.api.g6.pokedex.pokemonType.infrastructure.http.pokeapi.entity;
+package com.mdas.api.g6.pokedex.pokemonType.infrastructure.pokeapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

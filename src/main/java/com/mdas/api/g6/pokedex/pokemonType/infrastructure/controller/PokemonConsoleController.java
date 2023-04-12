@@ -1,4 +1,4 @@
-package com.mdas.api.g6.pokedex.pokemonType.infrastructure.console.controller;
+package com.mdas.api.g6.pokedex.pokemonType.infrastructure.controller;
 
 import com.mdas.api.g6.pokedex.pokemonType.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokedex.pokemonType.application.GetPokemonByNameUseCase;

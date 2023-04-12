@@ -1,11 +1,11 @@
-package com.mdas.api.g6.pokedex.pokemonType.infrastructure.http.pokeapi.mapper;
+package com.mdas.api.g6.pokedex.pokemonType.infrastructure.pokeapi.mapper;
 
 import com.mdas.api.g6.pokedex.pokemonType.domain.Pokemon;
 import com.mdas.api.g6.pokedex.pokemonType.domain.valueobject.PokemonId;
 import com.mdas.api.g6.pokedex.pokemonType.domain.valueobject.PokemonName;
 import com.mdas.api.g6.pokedex.pokemonType.domain.valueobject.PokemonTypes;
-import com.mdas.api.g6.pokedex.pokemonType.infrastructure.http.pokeapi.entity.PokemonApiEntity;
-import com.mdas.api.g6.pokedex.pokemonType.infrastructure.http.pokeapi.entity.PokemonTypeApiEntity;
+import com.mdas.api.g6.pokedex.pokemonType.infrastructure.pokeapi.entity.PokemonApiEntity;
+import com.mdas.api.g6.pokedex.pokemonType.infrastructure.pokeapi.entity.PokemonTypeApiEntity;
 import com.mdas.api.g6.pokedex.pokemonType.domain.valueobject.PokemonType;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

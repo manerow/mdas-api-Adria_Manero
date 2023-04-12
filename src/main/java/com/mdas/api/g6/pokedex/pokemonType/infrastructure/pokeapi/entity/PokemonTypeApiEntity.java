@@ -1,8 +1,8 @@
-package com.mdas.api.g6.pokedex.pokemonType.infrastructure.http.pokeapi.entity;
+package com.mdas.api.g6.pokedex.pokemonType.infrastructure.pokeapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.mdas.api.g6.pokedex.pokemonType.infrastructure.http.pokeapi.entity.deserializer.PokemonTypeApiEntityDeserializer;
+import com.mdas.api.g6.pokedex.pokemonType.infrastructure.pokeapi.entity.deserializer.PokemonTypeApiEntityDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

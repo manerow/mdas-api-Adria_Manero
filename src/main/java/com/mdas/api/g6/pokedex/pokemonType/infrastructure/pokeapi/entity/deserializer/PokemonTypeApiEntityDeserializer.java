@@ -1,11 +1,11 @@
-package com.mdas.api.g6.pokedex.pokemonType.infrastructure.http.pokeapi.entity.deserializer;
+package com.mdas.api.g6.pokedex.pokemonType.infrastructure.pokeapi.entity.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.mdas.api.g6.pokedex.pokemonType.infrastructure.http.pokeapi.entity.PokemonTypeApiEntity;
+import com.mdas.api.g6.pokedex.pokemonType.infrastructure.pokeapi.entity.PokemonTypeApiEntity;
 
 import java.io.IOException;
 

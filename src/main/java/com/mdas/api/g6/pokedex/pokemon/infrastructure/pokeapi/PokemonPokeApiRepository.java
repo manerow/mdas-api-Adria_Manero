@@ -1,4 +1,4 @@
-package com.mdas.api.g6.pokedex.pokemon.infrastructure.pokeapi.adapter;
+package com.mdas.api.g6.pokedex.pokemon.infrastructure.pokeapi;
 
 import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.PokemonNotFoundException;
