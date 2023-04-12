@@ -3,6 +3,7 @@ package com.mdas.api.g6.pokedex.pokemon.acceptance;
 import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
 import com.mdas.api.g6.shared.infrastructure.controller.dto.ApiResponse;
 import org.apache.commons.lang3.reflect.TypeUtils;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +15,24 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.testcontainers.containers.RabbitMQContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class PokemonControllerTest {
+ class PokemonControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
-    public void getPokemonById_ReturnsPokemon() {
+     void getPokemonById_ReturnsPokemon() {
         // Given
         int pokemonId = 25;
 
@@ -42,7 +47,7 @@ public class PokemonControllerTest {
     }
 
     @Test
-    public void getPokemonById_ReturnsNotFound_WhenPokemonNotFound() {
+     void getPokemonById_ReturnsNotFound_WhenPokemonNotFound() {
         // Given
         int pokemonId = 1000000;
 

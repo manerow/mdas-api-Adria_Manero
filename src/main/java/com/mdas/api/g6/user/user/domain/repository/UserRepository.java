@@ -10,5 +10,4 @@ public interface UserRepository {
     boolean existsById(UserId userId);
     void save(User user);
     User getUserById(UserId userId);
-    void update(User user);
 }

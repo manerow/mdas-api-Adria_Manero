@@ -10,6 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PokemonId {
-    private Integer id;
+    private int id;
 }
 

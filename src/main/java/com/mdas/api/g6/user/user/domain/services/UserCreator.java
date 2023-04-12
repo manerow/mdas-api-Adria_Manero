@@ -6,17 +6,17 @@ import com.mdas.api.g6.user.user.domain.repository.UserRepository;
 import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemons;
 import com.mdas.api.g6.user.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.user.domain.valueobject.UserName;
-import java.util.HashSet;
-
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
 
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserCreator {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public User create(UserId userId, UserName userName) throws UserAlreadyExistsException {
         guard(userId);

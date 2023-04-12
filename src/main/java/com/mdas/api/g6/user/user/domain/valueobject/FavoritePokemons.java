@@ -9,15 +9,15 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FavoritePokemons {
-    private Set<FavoritePokemon> favoritePokemons;
+    private Set<PokemonId> favoritePokemons;
 
-    public void add(FavoritePokemon favoritePokemon) throws PokemonAlreadyAddException {
+    public void add(PokemonId favoritePokemon) throws PokemonAlreadyAddException {
         guardPokemonAlreadyAdded(favoritePokemon);
         favoritePokemons.add(favoritePokemon);
     }
-    private void guardPokemonAlreadyAdded(FavoritePokemon favoritePokemon) throws PokemonAlreadyAddException {
+    private void guardPokemonAlreadyAdded(PokemonId favoritePokemon) throws PokemonAlreadyAddException {
         if (favoritePokemons.contains(favoritePokemon)) {
-            throw new PokemonAlreadyAddException("Pokemon already add on list with Id: " + favoritePokemon.getId().toString());
+            throw new PokemonAlreadyAddException("Pokemon already add on list with Id: " + favoritePokemon.getId());
         }
     }
 }

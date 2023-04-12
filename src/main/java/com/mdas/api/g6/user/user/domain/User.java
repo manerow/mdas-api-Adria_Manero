@@ -1,7 +1,7 @@
 package com.mdas.api.g6.user.user.domain;
 
 import com.mdas.api.g6.user.user.domain.exception.PokemonAlreadyAddException;
-import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemon;
+import com.mdas.api.g6.user.user.domain.valueobject.PokemonId;
 import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemons;
 import com.mdas.api.g6.user.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.user.domain.valueobject.UserName;
@@ -16,7 +16,8 @@ public class User {
     private UserName name;
     private FavoritePokemons favoritePokemons;
 
-    public void addFavoritePokemon(FavoritePokemon favoritePokemon) throws PokemonAlreadyAddException {
-        favoritePokemons.add(favoritePokemon);
+    public void addFavoritePokemon(PokemonId pokemonId) throws PokemonAlreadyAddException {
+        favoritePokemons.add(pokemonId);
     }
+
 }

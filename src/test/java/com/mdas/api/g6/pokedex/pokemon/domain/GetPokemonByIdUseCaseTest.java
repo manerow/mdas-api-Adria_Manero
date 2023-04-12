@@ -1,7 +1,6 @@
 package com.mdas.api.g6.pokedex.pokemon.domain;
 
 import com.mdas.api.g6.pokedex.pokemon.application.GetPokemonByIdUseCase;
-import com.mdas.api.g6.pokedex.pokemon.domain.Pokemon;
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.PokemonNotFoundException;
 import com.mdas.api.g6.pokedex.pokemon.domain.exception.RepositoryUnavailableException;
 import com.mdas.api.g6.pokedex.pokemon.domain.services.PokemonFinder;
@@ -29,7 +28,7 @@ public class GetPokemonByIdUseCaseTest {
         // Given
         Integer pokemonId = 1;
         Pokemon expectedPokemon = PokemonMother.random();
-        when(pokemonSearcher.getPokemonById(Mockito.any())).thenReturn(expectedPokemon);
+        when(pokemonSearcher.find(Mockito.any())).thenReturn(expectedPokemon);
 
         // When
         Pokemon actualPokemon = getPokemonByIdUseCase.execute(pokemonId);
@@ -42,7 +41,7 @@ public class GetPokemonByIdUseCaseTest {
     void execute_withInvalidId_throwsPokemonNotFoundException() throws PokemonNotFoundException, RepositoryUnavailableException {
         // Given
         Integer pokemonId = 999999;
-        when(pokemonSearcher.getPokemonById(Mockito.any()))
+        when(pokemonSearcher.find(Mockito.any()))
                 .thenThrow(new PokemonNotFoundException());
 
         // When and Then
@@ -53,7 +52,7 @@ public class GetPokemonByIdUseCaseTest {
     void execute_withServiceUnavailable_throwsRepositoryUnavailableException() throws PokemonNotFoundException, RepositoryUnavailableException {
         // Given
         Integer pokemonId = 1;
-        when(pokemonSearcher.getPokemonById(Mockito.any()))
+        when(pokemonSearcher.find(Mockito.any()))
                 .thenThrow(new RepositoryUnavailableException());
 
         // When and Then

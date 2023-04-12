@@ -1,7 +1,7 @@
 package com.mdas.api.g6.user.user.infrastructure.persistence.mapper;
 
 import com.mdas.api.g6.user.user.domain.User;
-import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemon;
+import com.mdas.api.g6.user.user.domain.valueobject.PokemonId;
 import com.mdas.api.g6.user.user.domain.valueobject.FavoritePokemons;
 import com.mdas.api.g6.user.user.domain.valueobject.UserId;
 import com.mdas.api.g6.user.user.domain.valueobject.UserName;
@@ -36,8 +36,8 @@ public interface UserInMemoryMapper {
 
     @Named("mapFavoritePokemonsToDomain")
     default FavoritePokemons mapFavouritePokemonsToDomain(Set<Integer> favouritePokemons) {
-        Set<FavoritePokemon> favoritePokemonsSet = favouritePokemons.stream()
-                .map(FavoritePokemon::new)
+        Set<PokemonId> favoritePokemonsSet = favouritePokemons.stream()
+                .map(PokemonId::new)
                 .collect(Collectors.toSet());
         return new FavoritePokemons(favoritePokemonsSet);
     }
@@ -55,7 +55,7 @@ public interface UserInMemoryMapper {
     @Named("mapFavoritePokemonsToEntity")
     default Set<Integer> mapFavouritePokemonsToEntity(FavoritePokemons favoritePokemons) {
         return favoritePokemons.getFavoritePokemons().stream()
-                .map(FavoritePokemon::getId)
+                .map(PokemonId::getId)
                 .collect(Collectors.toSet());
     }
 }

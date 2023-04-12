@@ -34,7 +34,7 @@ public class PokemonFinderTest {
         when(pokemonRepository.getPokemonById(Mockito.any())).thenReturn(expectedPokemon);
 
         // When
-        Pokemon actualPokemon = pokemonFinder.getPokemonById(pokemonId);
+        Pokemon actualPokemon = pokemonFinder.find(pokemonId);
 
         // Then
         assertEquals(expectedPokemon, actualPokemon);
@@ -48,7 +48,7 @@ public class PokemonFinderTest {
                 .thenThrow(new PokemonNotFoundException());
 
         // When and Then
-        assertThrows(PokemonNotFoundException.class, () -> pokemonFinder.getPokemonById(pokemonId));
+        assertThrows(PokemonNotFoundException.class, () -> pokemonFinder.find(pokemonId));
     }
 
     @Test
@@ -59,6 +59,6 @@ public class PokemonFinderTest {
                 .thenThrow(new RepositoryUnavailableException());
 
         // When and Then
-        assertThrows(RepositoryUnavailableException.class, () -> pokemonFinder.getPokemonById(pokemonId));
+        assertThrows(RepositoryUnavailableException.class, () -> pokemonFinder.find(pokemonId));
     }
 }
