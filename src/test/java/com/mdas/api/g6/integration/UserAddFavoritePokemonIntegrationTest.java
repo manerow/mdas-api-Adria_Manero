@@ -9,7 +9,6 @@ import com.mdas.api.g6.user.user.infrastructure.controller.dto.CreateUserRequest
 import com.mdas.api.g6.user.user.objectmother.UserIdMother;
 import com.mdas.api.g6.user.user.objectmother.UserNameMother;
 import org.apache.commons.lang3.reflect.TypeUtils;
-import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @Testcontainers
-public class UserAddFavoritePokemonIntegrationTest {
+class UserAddFavoritePokemonIntegrationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -77,7 +76,7 @@ public class UserAddFavoritePokemonIntegrationTest {
         HttpEntity<AddFavoritePokemonRequest> request = new HttpEntity<>(addFavoritePokemonRequest, headers);
 
         // WHEN
-        ResponseEntity<ApiResponse<User>> response = restTemplate.exchange(
+        ResponseEntity<ApiResponse<User>> userAddFavoritePokemonResponse = restTemplate.exchange(
                 "/user/add-favorite-pokemon",
                 HttpMethod.POST,
                 request,
@@ -85,21 +84,19 @@ public class UserAddFavoritePokemonIntegrationTest {
         );
 
 
-        ResponseEntity<ApiResponse<Pokemon>> response1 = restTemplate.exchange("/pokemon/detail?id=" + addFavoritePokemonRequest.getPokemonId(),
+        ResponseEntity<ApiResponse<Pokemon>> favoritedPokemonDetailResponse = restTemplate.exchange("/pokemon/detail?id=" + addFavoritePokemonRequest.getPokemonId(),
                 HttpMethod.GET, null, ParameterizedTypeReference.forType(TypeUtils.parameterize(ApiResponse.class, Pokemon.class)));
 
         // THEN
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertNotNull(response.getBody());
-        assertNull(response.getBody().getMessage());
-        assertNotNull(response.getBody().getData());
-        assertNotEquals(0, response.getBody().getData().getFavoritePokemons().getFavoritePokemons().size());
+        assertEquals(HttpStatus.CREATED, userAddFavoritePokemonResponse.getStatusCode());
+        assertNotNull(userAddFavoritePokemonResponse.getBody());
+        assertNull(userAddFavoritePokemonResponse.getBody().getMessage());
+        assertNotNull(userAddFavoritePokemonResponse.getBody().getData());
+        assertNotEquals(0, userAddFavoritePokemonResponse.getBody().getData().getFavoritePokemons().getFavoritePokemons().size());
 
         // Then
-        assertEquals(HttpStatus.OK, response1.getStatusCode());
-        assertNotNull(response1.getBody().getData());
-        assertEquals(1, response1.getBody().getData().getFavorites().getFavorites());
+        assertEquals(HttpStatus.OK, favoritedPokemonDetailResponse.getStatusCode());
+        assertNotNull(favoritedPokemonDetailResponse.getBody().getData());
+        assertEquals(1, favoritedPokemonDetailResponse.getBody().getData().getFavorites().getFavorites());
     }
-
-
 }

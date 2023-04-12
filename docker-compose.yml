@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   rabbitmq:
+    container_name: mdas-api-RabbitMQ
     image: "rabbitmq:3-alpine"
     ports:
       - "5672:5672"
@@ -9,6 +10,7 @@ services:
       - rabbit-network
 
   app:
+    container_name: mdas-api-Adria-Manero
     build: .
     stdin_open: true
     tty: true
